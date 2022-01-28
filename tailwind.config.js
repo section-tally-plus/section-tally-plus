@@ -4,7 +4,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mont: ['Montserrat', 'sans-serif'],
+        // play: ["Playfair Display", "serif"],
+      },
+      spacing: {
+        '2px': '2px',
+      },
+    },
   },
   plugins: [],
 }
