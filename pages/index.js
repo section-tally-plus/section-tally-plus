@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import tw, { styled, css } from 'twin.macro'
-import Lake from '../public/lake.jpg'
 
+import Lake from '../public/lake.jpg'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const Section = tw.section`flex flex-col items-center justify-center min-h-screen py-2`
 
@@ -24,7 +25,7 @@ export default function Home() {
   return (
     <Section>
       <Head>
-        <title>Create Next App</title>
+        <title>SectionTally +</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -36,19 +37,7 @@ export default function Home() {
           </ImageWrapper>
         </Hero>
       </Main>
-
-      {/* below hasn't been changed, you can see how tailwind is traditionally applied as classe (classNames in react) */}
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      <Footer />
     </Section>
   )
 }

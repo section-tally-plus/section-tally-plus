@@ -7,10 +7,28 @@ module.exports = {
     extend: {
       fontFamily: {
         mont: ['Montserrat', 'sans-serif'],
-        // play: ["Playfair Display", "serif"],
+        oxygen: ['Oxygen', 'sans-serif'],
       },
       spacing: {
+        px: '1px',
         '2px': '2px',
+      },
+      colors: {
+        // Discor Colors
+        servers: '#202225',
+        channels: '#2f3136',
+        chat: '#36393f',
+        grey: '#99aab5',
+        skin: '#f9c9a9',
+        high: '#f57731',
+        brilliance: '#f9c9a9',
+        balance: '#44ddbf',
+        bravery: '#9b84ee',
+        nitro: '#ff73fa',
+        idle: '#faa61a',
+        dnd: '#fo4747',
+        online: '#43B581',
+        discord: '#7289da',
       },
     },
   },
