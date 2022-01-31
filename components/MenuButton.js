@@ -1,16 +1,23 @@
 import React from 'react'
-import tw from 'twin.macro'
+import tw, { styled } from 'twin.macro'
 
-const Button = tw.button`w-12 h-12 flex flex-col bg-purple-900 rounded-lg items-center justify-center gap-1.5`
+const Button = tw.button`flex flex-row items-center justify-center rounded-lg gap-1.5`
 
-const Line = tw.div`w-8/12 h-px bg-white -translate-x-0.5 transform`
+const Burger = tw.div`w-6 h-auto rounded-full bg-gray-800 flex flex-col gap-1 items-center justify-center`
+
+const Line = tw.div`w-full h-2px bg-white`
 
 const MenuButton = ({ ...rest }) => {
   return (
     <Button {...rest}>
-      <Line />
-      <Line tw="transform translate-x-1" />
-      <Line />
+      <div tw="h-full flex flex-col items-center justify-center">
+        <p tw="leading-none">menu</p>
+      </div>
+      <Burger>
+        <Line />
+        <Line />
+        <Line />
+      </Burger>
     </Button>
   )
 }
