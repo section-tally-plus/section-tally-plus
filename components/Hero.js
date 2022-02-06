@@ -1,28 +1,37 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import tw, { styled } from 'twin.macro'
+import AnimateHeight from 'react-animate-height'
+import AppContext from './AppContext'
 
 import SemesterBar from './SemesterBar'
 
-const Section = tw.div`flex flex-col w-full h-screen relative`
+const Section = tw.div`flex flex-col w-full relative h-[66vh]`
 
 const ImageWrapper = styled.div`
-  ${tw`h-2/3 relative top-0 flex items-center justify-center w-full shadow-xl`}
+  ${tw`relative top-0 flex items-center justify-center w-full h-full shadow-xl`}
 
   & > img {
-    ${tw`absolute object-cover w-full h-full`}
+    ${tw`filter brightness-90 absolute object-cover w-full h-full`}
     object-postion: 50% 50%;
   }
 `
 
 const Hero = ({ ...rest }) => {
-  return (
-    <Section {...rest}>
-      <ImageWrapper>
-        <img src={'/lake.jpg'} alt="Lake" />
+  const { semester } = useContext(AppContext)
 
-        <SemesterBar />
-      </ImageWrapper>
-    </Section>
+  return (
+    <AnimateHeight
+      height={!!semester ? 0 : 'auto'}
+      duration={750}
+      easing="ease-in-out"
+    >
+      <Section {...rest}>
+        <ImageWrapper>
+          <img src={'/lake.jpg'} alt="Lake" />
+          <SemesterBar />
+        </ImageWrapper>
+      </Section>
+    </AnimateHeight>
   )
 }
 
