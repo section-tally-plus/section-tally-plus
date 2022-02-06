@@ -1,12 +1,8 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
-import tw, { styled } from 'twin.macro'
+import React, { Fragment } from 'react'
+import tw from 'twin.macro'
 import { Menu, Transition } from '@headlessui/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faUserCircle,
-  faSignInAlt,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
 const Section = tw.div``
 
