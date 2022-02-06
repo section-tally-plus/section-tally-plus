@@ -8,7 +8,7 @@ const Section = tw.div``
 
 const TopItem = tw(
   Menu.Button
-)`bg-opacity-20 relative hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 inline-flex justify-center items-center w-full px-4 py-2 text-white bg-blue-500 rounded-md`
+)`bg-opacity-20 relative hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 inline-flex justify-center items-center w-full px-4 h-10 text-white bg-blue-500 rounded-md`
 
 const List = tw(
   Menu.Items
