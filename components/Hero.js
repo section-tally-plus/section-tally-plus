@@ -5,13 +5,15 @@ import AppContext from './AppContext'
 
 import SemesterBar from './SemesterBar'
 
+import CourseDisplay from './CourseDisplay'
+
 const Section = tw.div`flex flex-col w-full relative h-[66vh]`
 
 const ImageWrapper = styled.div`
   ${tw`relative top-0 flex items-center justify-center w-full h-full shadow-xl`}
 
   & > img {
-    ${tw`filter brightness-90 absolute object-cover w-full h-full`}
+    ${tw`absolute object-cover w-full h-full filter brightness-90`}
     object-postion: 50% 50%;
   }
 `
@@ -21,7 +23,7 @@ const Hero = ({ ...rest }) => {
 
   return (
     <AnimateHeight
-      height={!!semester ? 0 : 'auto'}
+      height={semester ? 0 : 'auto'}
       duration={750}
       easing="ease-in-out"
     >
@@ -30,8 +32,14 @@ const Hero = ({ ...rest }) => {
           <img src={'/lake.jpg'} alt="Lake" />
           <SemesterBar />
         </ImageWrapper>
-      </Section>
+      </Section>    
+
+      <CourseDisplay />
+      <CourseDisplay />
+
     </AnimateHeight>
+
+    
   )
 }
 
