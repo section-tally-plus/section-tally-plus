@@ -1,96 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import tw from 'twin.macro'
 
-const crn = '44236'
-const partTerm = 'Full Term 06-SEP to 21-DEC'
-const section = '1'
-const prof = 'Lin, Tony'
-const session = 'Day'
-const day = 'TR'
-const start = '1100'
-const end = '1215'
-const build = 'BUSN'
-const room = '103'
-const campus = 'Main'
-
-const meetingInfo = [
-  {
-    day: day,
-    start: start,
-    end: end,
-    building: build,
-    room: room,
-    campus: campus,
-  },
-  {
-    day: day,
-    start: start,
-    end: end,
-    building: build,
-    room: room,
-    campus: campus,
-  },
-]
+import ClassItem from './ClassItem'
 
 const List = tw.div`relative flex flex-col justify-start h-auto`
+const Section = tw.ul`relative flex flex-row text-gray-800 items-start justify-start gap-6 py-1 flex-wrap px-20 border-b border-gray-800 border-opacity-10`
 
-const Section = tw.ul`relative flex flex-row text-gray-800 items-start justify-start gap-4 py-1 flex-wrap px-20 border-b border-gray-800 border-opacity-10`
+const MeetingItem = tw.li`relative flex flex-row gap-6`
 
-const MeetingInfo = tw.ul`relative flex flex-row gap-4`
-
-const SectionList = ({ isClosed, ...rest }) => {
+const SectionList = ({ isClosed, sectionData, ...rest }) => {
   return (
-    <AnimateHeight
-      height={isClosed === true ? 0 : 'auto'}
-      duration={250}
-      easing="ease-in-out"
-    >
+    <AnimateHeight height={isClosed ? 0 : 'auto'} easing="ease-in-out">
       <List>
-        <Section {...rest}>
-          <li>
-            CRN: <a href="#">{crn}</a>
-          </li>
-          <li>{partTerm}</li>
-          <li>Section: {section}</li>
-          <li>Professor: {prof}</li>
-          <li>
-            {meetingInfo.map((meeting, i) => (
-              <MeetingInfo key={i}>
-                <li>{meeting.campus}</li>
-                <li>
-                  {meeting.day} {meeting.start} - {meeting.end}
-                </li>
-                <li>
-                  {meeting.building} {meeting.room}
-                </li>
-                <li>(Lab)</li>
-              </MeetingInfo>
-            ))}
-          </li>
-        </Section>
-        <Section {...rest}>
-          <li>
-            CRN: <a href="#">{crn}</a>
-          </li>
-          <li>{partTerm}</li>
-          <li>Section: {section}</li>
-          <li>Professor: {prof}</li>
-          <li>
-            {meetingInfo.map((meeting, i) => (
-              <MeetingInfo key={i}>
-                <li>{meeting.campus}</li>
-                <li>
-                  {meeting.day} {meeting.start} - {meeting.end}
-                </li>
-                <li>
-                  {meeting.building} {meeting.room}
-                </li>
-                <li>(Lab)</li>
-              </MeetingInfo>
-            ))}
-          </li>
-        </Section>
+        {sectionData.map(({ crn, partTerm, section, prof, meetingData }, i) => (
+          <Section key={i}>
+            <ClassItem>{crn}</ClassItem>
+            <ClassItem>{partTerm}</ClassItem>
+            <ClassItem>{section}</ClassItem>
+            <ClassItem>{prof}</ClassItem>
+            <List>
+              {meetingData.map(
+                ({ day, start, end, building, room, campus, type }, i) => (
+                  <MeetingItem>
+                    <ClassItem>{campus}</ClassItem>
+                    <ClassItem>
+                      {day} {start} - {end}
+                    </ClassItem>
+                    <ClassItem>
+                      {building} {room}
+                    </ClassItem>
+                    <ClassItem>{type}</ClassItem>
+                  </MeetingItem>
+                )
+              )}
+            </List>
+          </Section>
+        ))}
       </List>
     </AnimateHeight>
   )
