@@ -19,13 +19,17 @@ const MenuItems = [
     label: 'Sign-in',
     icon: 'faSignInAlt',
     action: () => {
-      console.log('Sign-in')
+      location.href = '/api/auth/login';
+      console.log('Sign-in');
+      
     },
   },
   {
     label: 'Create Account',
     icon: 'faPlus',
     action: () => {
+      location.href = '/api/auth/login';
+      location.reload();
       console.log('Create Account')
     },
   },

@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.19.4",
+    "@auth0/nextjs-auth0": "^1.7.0",
     "@emotion/css": "^11.7.1",
     "@emotion/react": "^11.7.1",
     "@emotion/server": "^11.4.0",
