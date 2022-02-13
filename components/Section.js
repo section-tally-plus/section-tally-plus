@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import ClassItem from './ClassItem'
 
 const Single = tw.ul`relative flex flex-row text-gray-800 items-start justify-start gap-6 py-1 flex-wrap px-20 border-b border-gray-800 border-opacity-10`
-const MeetingItem = tw.li`relative flex flex-row gap-6`
+const MeetingItem = tw.li`relative flex flex-row gap-6 flex-wrap`
 
 const List = tw.div`relative flex flex-col justify-start h-auto`
 

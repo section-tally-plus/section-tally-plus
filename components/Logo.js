@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import tw, { styled } from 'twin.macro'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare } from '@fortawesome/free-regular-svg-icons'
