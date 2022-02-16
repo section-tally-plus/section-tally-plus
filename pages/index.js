@@ -134,7 +134,7 @@ const data = [
     ],
   },
   {
-    title: 'Intro Bus/Analytcs Fin Info',
+    title: 'REALLLLLLLY LLLONNNNNNGGGGG CLLLASSSSSSSS NAMMEEEEEEEEEEE',
     subject: 'ACC',
     courseNum: '01350',
     creditHours: '3.0',
@@ -143,13 +143,12 @@ const data = [
         crn: '44236',
         partTerm: 'Full Term 06-SEP to 21-DEC',
         section: '1',
-        prof: 'Lin, Tony',
         meetingData: [
           {
-            day: 'TR',
+            day: 'MF',
             start: '1100',
             end: '1215',
-            prof: 'Lin, Tony',
+            prof: 'Lin, Different professor',
             building: 'BUSN',
             room: '103',
             campus: 'Main',
@@ -171,7 +170,6 @@ const data = [
         crn: '44236',
         partTerm: 'Full Term 06-SEP to 21-DEC',
         section: '1',
-        prof: 'Lin, Tony',
         meetingData: [
           {
             day: 'TR',
