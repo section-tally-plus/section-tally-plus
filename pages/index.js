@@ -5,11 +5,7 @@ import AppContext from '../components/AppContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Sidebar from '../components/Sidebar'
-
-const MainWrapper = styled.div(({ showSidebar }) => [
-  tw`relative right-0 flex flex-col items-center justify-start w-full`,
-  showSidebar && tw`w-[calc(100% - 25rem)]`,
-])
+import Results from '../components/Results'
 
 export default function Home() {
   const { showSidebar } = useContext(AppContext)
@@ -17,9 +13,8 @@ export default function Home() {
   return (
     <Layout>
       <Sidebar />
-      <MainWrapper showSidebar={showSidebar}>
-        <Hero />
-      </MainWrapper>
+      <Hero />
+      <Results />
     </Layout>
   )
 }

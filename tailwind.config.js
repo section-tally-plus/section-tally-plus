@@ -12,6 +12,11 @@ module.exports = {
       spacing: {
         px: '1px',
         '2px': '2px',
+        SBWIDTH: '25rem',
+      },
+      zIndex: {
+        '-1': '-1',
+        excessive: '9999',
       },
       colors: {
         // Discor Colors
