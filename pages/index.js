@@ -6,15 +6,28 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Sidebar from '../components/Sidebar'
 import Results from '../components/Results'
+import AnimateHeight from 'react-animate-height'
+
+const Wrapper = styled.div(({ semester }) => [
+  tw`relative flex flex-col w-full min-h-screen`,
+])
 
 export default function Home() {
-  const { showSidebar } = useContext(AppContext)
+  const { showSidebar, semester } = useContext(AppContext)
 
   return (
     <Layout>
-      <Sidebar />
       <Hero />
-      <Results />
+      <AnimateHeight
+        height={!!semester ? 'auto' : 0}
+        duration={500}
+        easing="ease-in-out"
+      >
+        <Wrapper semester={semester}>
+          <Sidebar />
+          <Results />
+        </Wrapper>
+      </AnimateHeight>
     </Layout>
   )
 }

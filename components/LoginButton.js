@@ -19,17 +19,16 @@ const MenuItems = [
     label: 'Sign-in',
     icon: 'faSignInAlt',
     action: () => {
-      location.href = '/api/auth/login';
-      console.log('Sign-in');
-      
+      location.href = '/api/auth/login'
+      console.log('Sign-in')
     },
   },
   {
     label: 'Create Account',
     icon: 'faPlus',
     action: () => {
-      location.href = '/api/auth/login';
-      location.reload();
+      location.href = '/api/auth/login'
+      location.reload()
       console.log('Create Account')
     },
   },
@@ -45,7 +44,7 @@ const LoginButton = ({ ...rest }) => {
             <FontAwesomeIcon tw="ml-2" icon={faUserCircle} />
           </TopItem>
         </div>
-        <Transition
+        {/* <Transition
           as={Fragment}
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
@@ -53,8 +52,8 @@ const LoginButton = ({ ...rest }) => {
           leave="transition ease-in duration-75"
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
-        >
-          <List>
+        > */}
+        {/* <List>
             <div tw="p-1">
               {MenuItems.map((item, index) => (
                 <Menu.Item key={index}>
@@ -68,8 +67,8 @@ const LoginButton = ({ ...rest }) => {
                 </Menu.Item>
               ))}
             </div>
-          </List>
-        </Transition>
+          </List> */}
+        {/* </Transition> */}
       </Menu>
     </Section>
   )

@@ -21,8 +21,8 @@ const Hero = ({ ...rest }) => {
 
   return (
     <AnimateHeight
-      height={!!semester ? 0 : 'auto'}
-      duration={750}
+      height={!!semester ? 72 : 'auto'}
+      duration={500}
       easing="ease-in-out"
     >
       <Section {...rest}>
