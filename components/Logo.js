@@ -15,9 +15,9 @@ const Button = styled.button`
 `
 
 const Logo = ({ href, ...rest }) => {
-  const { setSemester } = React.useContext(AppContext)
+  const { toggleResults } = React.useContext(AppContext)
   return (
-    <Button {...rest} onClick={() => setSemester('')}>
+    <Button {...rest} onClick={() => toggleResults(false)}>
       <span>Section</span>
       <span>Tally</span>
       <FontAwesomeIcon

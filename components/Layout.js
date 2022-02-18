@@ -13,7 +13,7 @@ const Layout = ({ children, ...rest }) => {
       </Head>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
