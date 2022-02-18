@@ -17,12 +17,12 @@ const ImageWrapper = styled.div`
 `
 
 const Hero = ({ ...rest }) => {
-  const { semester } = useContext(AppContext)
+  const { semester, showResults } = useContext(AppContext)
 
   return (
     <AnimateHeight
-      height={!!semester ? 0 : 'auto'}
-      duration={750}
+      height={showResults ? 72 : 'auto'}
+      duration={500}
       easing="ease-in-out"
     >
       <Section {...rest}>

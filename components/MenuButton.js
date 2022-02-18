@@ -1,19 +1,38 @@
-import React from 'react'
-import tw, { styled } from 'twin.macro'
+import React, { useContext } from 'react'
+import tw from 'twin.macro'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import AppContext from './AppContext'
 
-const Button = styled.button`
-  ${tw`bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 relative inline-flex items-center justify-center h-10 gap-2 px-4 text-white bg-blue-500 rounded-md`}
-`
+const Button = tw.button`hover:opacity-100 opacity-80 text-3xl text-white transition-all duration-300 ease-in-out`
 
 const MenuButton = ({ ...rest }) => {
+  const {
+    showSidebar,
+    toggleSidebar,
+    semester,
+    setSemester,
+    showResults,
+    toggleResults,
+  } = useContext(AppContext)
   return (
-    <Button {...rest}>
+    <Button
+      {...rest}
+      onClick={() => {
+        // this function is gross, but it think it works so I'm not going to touch it
+        // unless someone proves me wrong
+        if (!semester) {
+          !showResults && toggleSidebar(true)
+          toggleResults(!showResults)
+        } else if (showResults) {
+          toggleSidebar(!showSidebar)
+        } else {
+          toggleResults(true)
+          toggleSidebar(true)
+        }
+      }}
+    >
       <FontAwesomeIcon icon={faBars} />
-      <div tw="h-full flex flex-col items-center justify-center">
-        <p tw="leading-none">menu</p>
-      </div>
     </Button>
   )
 }
