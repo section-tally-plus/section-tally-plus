@@ -11,14 +11,18 @@ const Section = styled.aside(({ showSidebar }) => [
   showSidebar && tw`w-[20rem]`,
 ])
 
+const DropdownWrapper = tw.div`flex flex-col relative w-full gap-3`
+
 const Sidebar = ({ ...rest }) => {
   const { showSidebar } = useContext(AppContext)
 
   return (
     <Section showSidebar={showSidebar} {...rest}>
-      {filterOptions.map(({ title, options }, i) => (
-        <DropdownList key={i} title={title} options={options} />
-      ))}
+      <DropdownWrapper>
+        {filterOptions.map(({ title, options }, i) => (
+          <DropdownList key={i} title={title} options={options} />
+        ))}
+      </DropdownWrapper>
     </Section>
   )
 }
