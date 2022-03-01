@@ -6,7 +6,7 @@ import Rating from './Rating'
 
 const Single = tw.ul`relative flex flex-row text-gray-800 items-start justify-start gap-6 py-1 flex-wrap px-4 border-b border-gray-800 border-opacity-10`
 const MeetingItem = tw.ul`relative flex flex-row gap-6 flex-wrap`
-const SeatingItem = tw.li`relative flex flex-row gap-6 flex-wrap`
+const SeatingItem = tw.ul`relative flex flex-row gap-6 flex-wrap`
 
 const List = tw.div`relative flex flex-col justify-start h-auto gap-4`
 
@@ -60,18 +60,15 @@ const Section = ({
       </List>
 
       <SeatingItem>
-        {/*<ClassItem>Enrolled: {enrolled}</ClassItem>*/}
         <ClassItem heading="Availability">
           {avail} / {max}
         </ClassItem>
-        <ClassItem>
-          Reserved: {leftResv} / {maxResv}
+        <ClassItem heading="Reserved">
+          {leftResv} / {maxResv}
         </ClassItem>
-        {/*<ClassItem>Waiting: {waitCount}</ClassItem>*/}
-        <ClassItem>
-          Waiting: {waitAvail} / {waitCap}
+        <ClassItem heading="Wait Avail">
+          {waitAvail} / {waitCap}
         </ClassItem>
-        {/*<ClassItem>Room capacity: {roomCap}</ClassItem>*/}
       </SeatingItem>
     </Single>
   )
