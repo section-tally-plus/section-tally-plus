@@ -16,12 +16,18 @@ const Section = ({
   section,
   prof,
   meetingData,
-  seatingData,
+  max,
+  maxResv,
+  leftResv,
+  enrolled,
+  avail,
+  waitCap,
+  waitCount,
+  waitAvail,
+  roomCap,
   ...rest
 }) => {
   const [isShown, setIsShown] = useState(false)
-  const { avail, max, leftResv, maxResv, waitAvail, waitCap } = seatingData
-  console.log(seatingData)
 
   return (
     <Single {...rest}>
