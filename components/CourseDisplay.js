@@ -43,11 +43,11 @@ const CourseDisplay = ({
         </Toggle>
       </Top>
       <AnimateHeight height={isClosed ? 0 : 'auto'} easing="ease-in-out">
-        <Heading>
+        {/* <Heading>
           <li>CRN</li>
           <li>Term Length</li>
           <li>Section</li>
-        </Heading>
+        </Heading> */}
         <SectionList>
           {sectionData.map((section, i) => (
             <Section key={i} {...section} />
