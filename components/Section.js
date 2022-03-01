@@ -31,42 +31,36 @@ const Section = ({
 
   return (
     <Single {...rest}>
-      <ClassItem heading="CRN">{crn}</ClassItem>
-      <ClassItem heading="Part of Term">{partTerm}</ClassItem>
-      <ClassItem heading="Section No">{section}</ClassItem>
-      <ClassItem
-        heading="Professor"
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}
-      >
-        {prof}
-      </ClassItem>
+      <ClassItem tw="w-10" heading="CRN">{crn}</ClassItem>
+      <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
+      <ClassItem tw="w-10" heading="Section">{section}</ClassItem>
       {isShown && <Rating></Rating>}
       <List>
         {meetingData.map(
-          ({ day, start, end, building, room, campus, type }, i) => (
+          ({ day, start, end, prof, building, room, campus, type }, i) => (
             <MeetingItem key={i}>
-              <ClassItem heading="Campus">{campus}</ClassItem>
-              <ClassItem heading="Day, Start - End">
-                {day} {start} - {end}
+              <ClassItem tw="w-36" heading="Professor">{prof}</ClassItem>
+              <ClassItem tw="w-16 " heading="Campus">{campus}</ClassItem>
+              <ClassItem tw="w-32" heading="Day, Start - End">
+                {day}, {start} - {end}
               </ClassItem>
-              <ClassItem heading="Building, Room">
+              <ClassItem tw="w-24 top-0" heading="Building, Room">
                 {building} {room}
               </ClassItem>
-              <ClassItem heading="">{type}</ClassItem>
+              <ClassItem tw="w-14" heading="Type">{type}</ClassItem>
             </MeetingItem>
           )
         )}
       </List>
 
       <SeatingItem>
-        <ClassItem heading="Availability">
+        <ClassItem tw="w-16" heading="Availability">
           {avail} / {max}
         </ClassItem>
-        <ClassItem heading="Reserved">
+        <ClassItem tw="w-16" heading="Reserved">
           {leftResv} / {maxResv}
         </ClassItem>
-        <ClassItem heading="Wait Avail">
+        <ClassItem tw="w-16" heading="Wait Avail">
           {waitAvail} / {waitCap}
         </ClassItem>
       </SeatingItem>

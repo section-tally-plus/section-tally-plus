@@ -28,10 +28,10 @@ const CourseDisplay = ({
     <Component>
       <Top>
         <List>
-          <ClassItem>
+          <ClassItem tw="w-36">
             {subject} - {courseNum}
           </ClassItem>
-          <ClassItem>{title}</ClassItem>
+          <ClassItem tw="w-96">{title}</ClassItem>
           <ClassItem>Credits: {creditHours}</ClassItem>
         </List>
         <Toggle

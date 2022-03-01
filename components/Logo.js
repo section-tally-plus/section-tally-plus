@@ -5,7 +5,7 @@ import { faPlusSquare } from '@fortawesome/free-regular-svg-icons'
 import AppContext from './AppContext'
 
 const Button = styled.button`
-  ${tw`font-oxygen relative flex flex-row items-center justify-center pr-6 text-2xl transition-all duration-300 ease-in-out`}
+  ${tw`relative flex flex-row items-center justify-center pr-6 text-2xl transition-all duration-300 ease-in-out font-oxygen`}
   &:hover {
     ${tw`text-blue-500`}
     & > svg {
