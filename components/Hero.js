@@ -21,13 +21,8 @@ const Hero = ({ ...rest }) => {
 
   return (
     <AnimateHeight
-<<<<<<< HEAD
       height={showResults ? 72 : 'auto'}
       duration={500}
-=======
-      height={semester ? 0 : 'auto'}
-      duration={750}
->>>>>>> 658ab2690095b57cd7b590b1302eb635569d46c2
       easing="ease-in-out"
     >
       <Section {...rest}>
