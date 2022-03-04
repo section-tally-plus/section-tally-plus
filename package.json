@@ -23,6 +23,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "heroicons": "^1.0.5",
+    "mongodb": "^4.4.0",
     "next": "latest",
     "next-auth": "^4.1.2",
     "next-pwa": "^5.4.4",
