@@ -31,7 +31,9 @@ const SemesterBar = ({ ...rest }) => {
           Select a Semester
         </option>
         {options.map(({ value, title }, i) => (
-          <option value={value}>{title}</option>
+          <option key={i} value={value}>
+            {title}
+          </option>
         ))}
       </Select>
       <Submit
