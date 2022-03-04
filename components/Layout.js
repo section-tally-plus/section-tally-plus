@@ -9,7 +9,7 @@ const Layout = ({ children, ...rest }) => {
     <>
       <Head>
         <title>SectionTally +</title>
-        <link rel="icon" href="/favicon.ico" />
+        {/*<link rel="icon" href="/favicon.ico" />*/}
       </Head>
       <Header />
       {children}

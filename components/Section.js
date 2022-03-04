@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import tw from 'twin.macro'
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+
 import ClassItem from './ClassItem'
 import Rating from './Rating'
 
@@ -27,19 +29,23 @@ const Section = ({
   roomCap,
   ...rest
 }) => {
-  const [isShown, setIsShown] = useState(false)
 
   return (
     <Single {...rest}>
       <ClassItem tw="w-10" heading="CRN">{crn}</ClassItem>
       <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
       <ClassItem tw="w-10" heading="Section">{section}</ClassItem>
-      {isShown && <Rating></Rating>}
       <List>
         {meetingData.map(
           ({ day, start, end, prof, building, room, campus, type }, i) => (
             <MeetingItem key={i}>
-              <ClassItem tw="w-36" heading="Professor">{prof}</ClassItem>
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={Rating}
+              >
+                <div><ClassItem tw="w-36" heading="Professor">{prof}</ClassItem></div>
+              </OverlayTrigger>
               <ClassItem tw="w-16 " heading="Campus">{campus}</ClassItem>
               <ClassItem tw="w-32" heading="Day, Start - End">
                 {day}, {start} - {end}
