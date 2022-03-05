@@ -6,9 +6,9 @@ import { filterOptions } from '../data/FilterData'
 import DropdownList from './DropdownList'
 
 const Section = styled.aside(({ showSidebar }) => [
-  tw`sticky top-0 left-0 z-50 flex flex-col items-center justify-start w-0 h-screen max-h-screen px-8 py-12 transition-all duration-500 ease-in-out bg-gray-800`,
+  tw`fixed bottom-0 left-0 z-50 flex flex-col items-center justify-start w-0 h-[calc(100vh - 75px)] max-h-screen py-12 overflow-x-hidden bg-gray-800`,
 
-  showSidebar && tw`w-[20rem]`,
+  showSidebar && tw`w-[20rem] px-8`,
 ])
 
 const DropdownWrapper = tw.div`flex flex-col relative w-full gap-3`
