@@ -46,7 +46,7 @@ const GoButton = ({ ...rest }) => {
           await axios
             .get(endpoint)
             .then((result) => {
-              // setSemesterData(result.data)
+              setSemesterData(result.data)
               console.log(result.data)
             })
             .catch((error) => console.log(error))
