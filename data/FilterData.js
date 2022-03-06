@@ -1,11 +1,15 @@
+export const semesters = [
+  { value: 'stp_202210', title: 'Winter 2022' },
+  { value: 'stp_202220', title: 'Spring 2022' },
+  { value: 'stp_202230', title: 'Summer 2022' },
+  { value: 'stp_202240', title: 'Fall 2022' },
+]
+
 export const filterOptions = [
   {
     title: 'College',
+    abv: 'college',
     options: [
-      {
-        label: 'All',
-        value: 'ALL',
-      },
       {
         label: 'No College',
         value: 'NC',
@@ -62,11 +66,8 @@ export const filterOptions = [
   },
   {
     title: 'Session',
+    abv: 'session',
     options: [
-      {
-        label: 'All',
-        value: 'ALL',
-      },
       {
         label: 'Day',
         value: 'D',
@@ -87,6 +88,7 @@ export const filterOptions = [
   },
   {
     title: 'Building',
+    abv: 'building',
     options: [
       {
         label: 'All',
@@ -203,6 +205,28 @@ export const filterOptions = [
       {
         label: 'Winans Hall',
         value: 'WINANS',
+      },
+    ],
+  },
+  {
+    title: 'Subject',
+    abv: 'Subj',
+    options: [
+      {
+        label: 'Accounting',
+        value: 'ACC',
+      },
+      {
+        label: 'Advertising',
+        value: 'ADV',
+      },
+      {
+        label: 'Anthropology',
+        value: 'ANTH',
+      },
+      {
+        label: 'Computer Science',
+        value: 'CS',
       },
     ],
   },

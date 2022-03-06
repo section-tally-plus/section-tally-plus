@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import tw, { styled } from 'twin.macro'
 import appContext from './AppContext'
 
+import SemesterSelect from './SemesterSelect'
+import GoButton from './GoButton'
+
 const Section = styled.form`
   ${tw`absolute flex flex-row gap-4`}
 
@@ -10,48 +13,15 @@ const Section = styled.form`
   }
 `
 
-const Select = styled.select`
-  ${tw`w-[20rem] text-2xl py-2 px-4 bg-gray-100 rounded-md text-gray-800`}
-`
 const Submit = tw.button`bg-blue-800 text-white rounded-md text-lg uppercase w-24 opacity-100 transition-colors ease-in-out duration-300 hover:(bg-blue-500 cursor-pointer)`
 
 const SemesterBar = ({ ...rest }) => {
   const { setSemester, toggleResults, toggleSidebar } = useContext(appContext)
 
-  const options = [
-    { value: 'spring2022', title: 'Spring 2022' },
-    { value: 'summer2022', title: 'Summer 2022' },
-    { value: 'fall2022', title: 'Fall 2022' },
-  ]
-
   return (
     <Section {...rest}>
-      <Select placeholder="Semester" required>
-        <option value="" disabled selected hidden>
-          Select a Semester
-        </option>
-        {options.map(({ value, title }, i) => (
-          <option key={i} value={value}>
-            {title}
-          </option>
-        ))}
-      </Select>
-      <Submit
-        onClick={(e) => {
-          e.preventDefault()
-
-          // todo: this works but make it be better
-          const thisSem = e.target.closest('form').querySelector('select').value
-
-          if (!!thisSem) {
-            setSemester(thisSem)
-            toggleResults(true)
-            toggleSidebar(true)
-          }
-        }}
-      >
-        Go
-      </Submit>
+      <SemesterSelect />
+      <GoButton />
     </Section>
   )
 }
