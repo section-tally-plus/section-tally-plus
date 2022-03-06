@@ -13,9 +13,7 @@ const GoButton = ({ ...rest }) => {
     selectedFilters,
     toggleResults,
     toggleSidebar,
-    semesterData,
     setSemesterData,
-    abvs,
   } = useContext(AppContext)
 
   return (
