@@ -8,15 +8,22 @@ const Section = styled.select`
 `
 
 const SemesterSelect = ({ ...rest }) => {
-  const { semeer, setSemester } = useContext(AppContext)
+  const { setSemester } = useContext(AppContext)
 
   return (
-    <Section {...rest} placeholder="Semester" required>
+    <Section
+      {...rest}
+      placeholder="Semester"
+      required
+      onChange={(e) => {
+        setSemester(e.target.value)
+      }}
+    >
       <option value="" disabled selected hidden>
         Select a Semester
       </option>
       {semesters.map(({ value, title }, i) => (
-        <option key={i} value={value} onClick={() => setSemester(value)}>
+        <option key={i} value={value}>
           {title}
         </option>
       ))}
