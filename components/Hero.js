@@ -12,12 +12,11 @@ const ImageWrapper = styled.div`
 
   & > img {
     ${tw`filter brightness-90 absolute object-cover w-full h-full`}
-    object-postion: 50% 50%;
   }
 `
 
 const Hero = ({ ...rest }) => {
-  const { semester, showResults } = useContext(AppContext)
+  const { showResults } = useContext(AppContext)
 
   return (
     <AnimateHeight

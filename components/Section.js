@@ -29,12 +29,17 @@ const Section = ({
   roomCap,
   ...rest
 }) => {
-
   return (
     <Single {...rest}>
-      <ClassItem tw="w-10" heading="CRN">{crn}</ClassItem>
-      <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
-      <ClassItem tw="w-10" heading="Section">{section}</ClassItem>
+      <ClassItem tw="w-10" heading="CRN">
+        {crn}
+      </ClassItem>
+      <ClassItem tw="w-20" heading="Part of Term">
+        {partTerm}
+      </ClassItem>
+      <ClassItem tw="w-10" heading="Section">
+        {section}
+      </ClassItem>
       <List>
         {meetingData.map(
           ({ day, start, end, prof, building, room, campus, type }, i) => (
@@ -44,16 +49,24 @@ const Section = ({
                 delay={{ show: 250, hide: 400 }}
                 overlay={Rating}
               >
-                <div><ClassItem tw="w-36" heading="Professor">{prof}</ClassItem></div>
+                <div>
+                  <ClassItem tw="w-36" heading="Professor">
+                    {prof}
+                  </ClassItem>
+                </div>
               </OverlayTrigger>
-              <ClassItem tw="w-16 " heading="Campus">{campus}</ClassItem>
+              <ClassItem tw="w-16" heading="Campus">
+                {campus}
+              </ClassItem>
               <ClassItem tw="w-32" heading="Day, Start - End">
                 {day}, {start} - {end}
               </ClassItem>
               <ClassItem tw="w-24 top-0" heading="Building, Room">
                 {building} {room}
               </ClassItem>
-              <ClassItem tw="w-14" heading="Type">{type}</ClassItem>
+              <ClassItem tw="w-14" heading="Type">
+                {type}
+              </ClassItem>
             </MeetingItem>
           )
         )}
