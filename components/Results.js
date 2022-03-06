@@ -19,27 +19,31 @@ const Section = styled.section(({ showSidebar }) => [
 const Results = ({ ...rest }) => {
   const { showSidebar, semesterData, endpoint } = useContext(AppContext)
 
-  const { observe, unobserve, inView, scrollDirection, entry } = useInView({
-    onEnter: ({ unobserve }) => {
-      unobserve()
-      axios.get(endpoint).then((res) => {
-        setTodos([...semesterData, ...res.data])
-      })
-    },
-  })
+  // const { observe, unobserve, inView, scrollDirection, entry } = useInView({
+  //   onEnter: ({ unobserve }) => {
+  //     unobserve()
+  //     axios.get(endpoint).then((res) => {
+  //       setTodos([...semesterData, ...res.data])
+  //     })
+  //   },
+  // })
 
-  console.log(inView)
+  // console.log(inView)
 
   return (
-    <Section showSidebar={showSidebar} ref={observe} {...rest}>
-      {semesterData !== [] &&
+    <Section
+      showSidebar={showSidebar}
+      // ref={observe}
+      {...rest}
+    >
+      {/* {semesterData !== [] &&
         semesterData.map((course, i) => (
           <CourseDisplay
             ref={i === data.length - 1 ? observe : null}
             key={i}
             {...course}
           />
-        ))}
+        ))} */}
     </Section>
   )
 }
