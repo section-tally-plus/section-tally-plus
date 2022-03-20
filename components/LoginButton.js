@@ -15,27 +15,16 @@ const LoginButton = ({ ...rest }) => {
     <Section {...rest}>
       <Menu as="div">
         {!isLoading && !error ? (
-          <div>
-            {user != undefined ? (
-              <button
-                onClick={() => {
-                  router.push('/api/auth/logout')
-                }}
-              >
-                Sign-out
-                <FontAwesomeIcon tw="ml-2" icon={faUserCircle} />
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  router.push('/api/auth/login')
-                }}
-              >
-                Sign-in
-                <FontAwesomeIcon tw="ml-2" icon={faUserCircle} />
-              </button>
-            )}
-          </div>
+          <button
+            onClick={() => {
+              !!user
+                ? router.push('/api/auth/logout')
+                : router.push('/api/auth/login')
+            }}
+          >
+            {!!user ? 'Sign-out' : 'Sign-in'}
+            <FontAwesomeIcon tw="ml-2" icon={faUserCircle} />
+          </button>
         ) : null}
       </Menu>
     </Section>
