@@ -8,4 +8,10 @@ export default async function handler(req, res) {
       .toArray()
     res.status(200).json(JSON.stringify(result, null, 2))
   }
+  if (req.method == 'PUT') {
+    const course = req.body
+    await db.collection('users').updateOne({ name: 'req.query.name' }),
+      { $push: { watchlist: course } }
+    res.status(200).json(`inserted ${course}`)
+  }
 }
