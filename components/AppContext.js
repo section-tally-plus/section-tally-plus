@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
   const [semester, setSemester] = useState('')
   const [showSidebar, toggleSidebar] = useState(true)
   const [showResults, toggleResults] = useState(false)
+  const [showProfile, toggleProfile] = useState(false)
   const [filters, setFilters] = useState(filterOptions) // used to build the sidebar
   const [semesterData, setSemesterData] = useState([]) // data returned from the api
   const [selectedFilters, setSelectedFilters] = useState({}) // used to filter the api data
@@ -28,6 +29,8 @@ export const AppProvider = ({ children }) => {
         toggleSidebar,
         showResults,
         toggleResults,
+        showProfile,
+        toggleProfile,
         selectedFilters,
         setSelectedFilters,
         filters,

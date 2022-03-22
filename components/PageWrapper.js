@@ -1,25 +1,27 @@
 import React, { useContext } from 'react'
 import tw, { styled } from 'twin.macro'
 import AppContext from '../components/AppContext'
+import AnimateHeight from 'react-animate-height'
 
 import Sidebar from '../components/Sidebar'
 import Results from '../components/Results'
-import AnimateHeight from 'react-animate-height'
+import Profile from '../components/Profile'
 
 const Wrapper = tw.div`relative flex flex-row justify-start w-full min-h-screen`
 
 const PageWrapper = ({ ...rest }) => {
-  const { showResults } = useContext(AppContext)
+  const { showResults, showProfile } = useContext(AppContext)
 
   return (
     <AnimateHeight
-      height={showResults ? 'auto' : 0}
+      height={showResults || showProfile ? 'auto' : 0}
       duration={500}
       easing="ease-in-out"
     >
       <Wrapper>
         <Sidebar />
-        <Results />
+        {showResults && <Results />}
+        {showProfile && <Profile />}
       </Wrapper>
     </AnimateHeight>
   )

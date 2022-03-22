@@ -14,6 +14,7 @@ const GoButton = ({ ...rest }) => {
     toggleResults,
     toggleSidebar,
     setSemesterData,
+    toggleProfile,
   } = useContext(AppContext)
 
   return (
@@ -24,6 +25,7 @@ const GoButton = ({ ...rest }) => {
 
         if (!!semester) {
           // todo: impliment a check if results are already being shown
+          toggleProfile(false)
           toggleResults(true)
           toggleSidebar(true)
 
