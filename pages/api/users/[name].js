@@ -10,8 +10,10 @@ export default async function handler(req, res) {
   }
   if (req.method == 'PUT') {
     const course = req.body
-    await db.collection('users').updateOne({ name: 'req.query.name' }),
-      { $push: { watchlist: course } }
+    console.log(req.query.name)
+    await db
+      .collection('users')
+      .updateOne({ name: req.query.name }, { $push: { watchlist: course } })
     res.status(200).json(`inserted ${course}`)
   }
 }
