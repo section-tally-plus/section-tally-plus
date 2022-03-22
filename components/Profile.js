@@ -8,6 +8,16 @@ const Section = styled.section(({ showSidebar }) => [
   showSidebar && tw`w-[calc(100% - 20rem)]`,
 ])
 
+const post = (user) => {
+  axios
+    .put(`http://localhost:3000/api/users/${user}`, {
+      course: '345345',
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
 const Profile = ({ ...rest }) => {
   const { user, error, isLoading } = useUser()
   console.log(user)
@@ -43,14 +53,19 @@ const Profile = ({ ...rest }) => {
         <h3>Classes Taken 📚</h3>
         <ul></ul>
       </div>
+
+      <div tw="mt-4">
+        <button
+          tw="bg-green-300"
+          onClick={() => {
+            post(user.name)
+          }}
+        >
+          Zach's Button
+        </button>
+      </div>
     </Section>
   )
 }
 
 export default Profile
-
-
-{
-	courseNo: "123145",
-	courseSubj: "CS",
-}
