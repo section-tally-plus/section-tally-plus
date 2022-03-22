@@ -48,3 +48,9 @@ const Profile = ({ ...rest }) => {
 }
 
 export default Profile
+
+
+{
+	courseNo: "123145",
+	courseSubj: "CS",
+}
