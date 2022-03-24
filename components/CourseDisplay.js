@@ -28,11 +28,11 @@ const CourseDisplay = ({
     <Component>
       <Top>
         <List>
-          <ClassItem tw="w-36">
+          <ClassItem tw="min-w-[9rem]">
             {subject} - {courseNum}
           </ClassItem>
-          <ClassItem tw="w-96">{title}</ClassItem>
-          <ClassItem>Credits: {creditHours}</ClassItem>
+          <ClassItem tw="min-w-[24rem]">{title}</ClassItem>
+          <ClassItem tw="min-w-[9rem]">Credits: {creditHours}</ClassItem>
         </List>
         <Toggle
           onClick={() => {
