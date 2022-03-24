@@ -31,6 +31,11 @@ const Section = ({
 }) => {
   return (
     <Single {...rest}>
+
+      <ClassItem tw="min-w-[2rem]" heading="CRN">{crn}</ClassItem>
+      <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
+      <ClassItem tw="min-w-[2.5rem]" heading="Section">{section}</ClassItem>
+
       <ClassItem tw="w-10" heading="CRN">
         {crn}
       </ClassItem>
@@ -40,6 +45,7 @@ const Section = ({
       <ClassItem tw="w-10" heading="Section">
         {section}
       </ClassItem>
+
       <List>
         {meetingData.map(
           ({ day, start, end, prof, building, room, campus, type }, i) => (
@@ -55,31 +61,40 @@ const Section = ({
                   </ClassItem>
                 </div>
               </OverlayTrigger>
+
+              <ClassItem tw="min-w-[4rem] " heading="Campus">{campus}</ClassItem>
+              <ClassItem tw="min-w-[8rem]" heading="Day, Start - End">
+
               <ClassItem tw="w-16" heading="Campus">
                 {campus}
               </ClassItem>
               <ClassItem tw="w-32" heading="Day, Start - End">
+
                 {day}, {start} - {end}
               </ClassItem>
-              <ClassItem tw="w-24 top-0" heading="Building, Room">
+              <ClassItem tw="min-w-[6rem] top-0" heading="Building, Room">
                 {building} {room}
               </ClassItem>
+
+              <ClassItem tw="min-w-[3.5rem]" heading="Type">{type}</ClassItem>
+
               <ClassItem tw="w-14" heading="Type">
                 {type}
               </ClassItem>
+
             </MeetingItem>
           )
         )}
       </List>
 
       <SeatingItem>
-        <ClassItem tw="w-16" heading="Availability">
+        <ClassItem tw="min-w-[4rem]" heading="Availability">
           {avail} / {max}
         </ClassItem>
-        <ClassItem tw="w-16" heading="Reserved">
+        <ClassItem tw="min-w-[4rem]" heading="Reserved">
           {leftResv} / {maxResv}
         </ClassItem>
-        <ClassItem tw="w-16" heading="Wait Avail">
+        <ClassItem tw="min-w-[4rem]" heading="Wait Avail">
           {waitAvail} / {waitCap}
         </ClassItem>
       </SeatingItem>

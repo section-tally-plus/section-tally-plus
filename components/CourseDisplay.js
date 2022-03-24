@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import tw from 'twin.macro'
 import AnimateHeight from 'react-animate-height'
+import Overlay from 'react-bootstrap/esm/Overlay'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 // import SectionList from './SectionList'
 import ClassItem from './ClassItem'
@@ -23,23 +27,38 @@ const CourseDisplay = ({
   ...rest
 }) => {
   const [isClosed, setClosed] = useState(false)
+  //const [fav, setFav] = useState(false)
+  const [show, setShow] = useState(false)
+  const target = useRef(null);
 
   return (
     <Component>
       <Top>
         <List>
-          <ClassItem tw="w-36">
+          <ClassItem tw="min-w-[9rem]">
             {subject} - {courseNum}
           </ClassItem>
-          <ClassItem tw="w-96">{title}</ClassItem>
-          <ClassItem>Credits: {creditHours}</ClassItem>
+          <ClassItem tw="min-w-[24rem]">{title}</ClassItem>
+          <ClassItem tw="min-w-[7rem]">Credits: {creditHours}</ClassItem>
         </List>
+
+        <button ref={target} onClick={() => setShow(!show)}>
+          <FontAwesomeIcon icon={faStar} />
+          {!show ? 'Fav' : 'UnFav'}
+        </button>
+        <Overlay target={target.current} show={show} placement="bottom-start">
+          
+            <div tw="absolute pl-2 bg-yellow-500">
+              {show ? 'Course added to favorites' : 'Course removed from favorites'}
+            </div>
+          
+        </Overlay>
         <Toggle
           onClick={() => {
             setClosed(!isClosed)
           }}
         >
-          toggle
+          {isClosed ? <FontAwesomeIcon icon={faAngleDown} /> : <FontAwesomeIcon icon={faAngleUp} />}
         </Toggle>
       </Top>
       <AnimateHeight height={isClosed ? 0 : 'auto'} easing="ease-in-out">
