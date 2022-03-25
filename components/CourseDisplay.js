@@ -50,11 +50,13 @@ const CourseDisplay = ({
           {!show ? 'Fav' : 'UnFav'}
         </button>
         {/* <Overlay target={target.current} show={show} placement="bottom-start">
-          
-            <div tw="absolute pl-2 bg-yellow-500">
-              {show ? 'Course added to favorites' : 'Course removed from favorites'}
-            </div>
-          
+
+          <div tw="absolute pl-2 bg-yellow-500">
+            {show
+              ? 'Course added to favorites'
+              : 'Course removed from favorites'}
+          </div>
+
         </Overlay> */}
         <Toggle
           onClick={() => {

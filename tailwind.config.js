@@ -30,7 +30,7 @@ module.exports = {
         bravery: '#9b84ee',
         nitro: '#ff73fa',
         idle: '#faa61a',
-        dnd: '#fo4747',
+        dnd: '#f04747',
         online: '#43B581',
         discord: '#7289da',
       },
