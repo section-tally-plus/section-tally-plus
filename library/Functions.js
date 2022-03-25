@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const getLists = async (user) => {
-  const data = await axios
+export const getUserFromDB = (user) => {
+  const data = axios
     .get(`http://localhost:3000/api/users/${user.email}`)
     .then((result) => {
       return result.data[0]

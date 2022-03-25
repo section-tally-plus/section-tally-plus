@@ -8,7 +8,7 @@ const Input = tw.input`w-full bg-gray-300 text-center`
 const Button = tw.button`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`
 
 const AddCourse = ({ type, addCourse, ...rest }) => {
-  const { user } = useContext(AppContext)
+  const { user, updateLists } = useContext(AppContext)
   const [course, setCourse] = useState('')
   const [Subj, setSubj] = useState('')
 
@@ -33,6 +33,7 @@ const AddCourse = ({ type, addCourse, ...rest }) => {
         onClick={(e) => {
           e.preventDefault()
           addCourse(user, course, Subj)
+          updateLists(user)
         }}
       >
         Add
