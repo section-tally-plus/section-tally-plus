@@ -13,10 +13,11 @@ const SeatingItem = tw.ul`relative flex flex-row gap-6 flex-wrap`
 const List = tw.div`relative flex flex-col justify-start h-auto gap-4`
 
 const Section = ({
-  crn,
-  partTerm,
-  section,
-  prof,
+  CRN: crn,
+  PartOfTerm: partTerm,
+  Sect: section,
+  Prof: prof,
+  Campus: campus,
   meetingData,
   max,
   maxResv,
@@ -46,45 +47,34 @@ const Section = ({
         {section}
       </ClassItem>
 
+      <OverlayTrigger
+        placement="right"
+        delay={{ show: 250, hide: 400 }}
+        overlay={Rating}
+      >
+        <div>
+          <ClassItem tw="w-36" heading="Professor">
+            {prof}
+          </ClassItem>
+        </div>
+      </OverlayTrigger>
+      <ClassItem tw="w-16" heading="Campus">
+        {campus}
+      </ClassItem>
       <List>
-        {meetingData.map(
-          ({ day, start, end, prof, building, room, campus, type }, i) => (
-            <MeetingItem key={i}>
-              <OverlayTrigger
-                placement="right"
-                delay={{ show: 250, hide: 400 }}
-                overlay={Rating}
-              >
-                <div>
-                  <ClassItem tw="w-36" heading="Professor">
-                    {prof}
-                  </ClassItem>
-                </div>
-              </OverlayTrigger>
-
-              <ClassItem tw="min-w-[4rem] " heading="Campus">{campus}</ClassItem>
-              <ClassItem tw="min-w-[8rem]" heading="Day, Start - End">
-
-              <ClassItem tw="w-16" heading="Campus">
-                {campus}
-              </ClassItem>
-              <ClassItem tw="w-32" heading="Day, Start - End">
-
-                {day}, {start} - {end}
-              </ClassItem>
-              <ClassItem tw="min-w-[6rem] top-0" heading="Building, Room">
-                {building} {room}
-              </ClassItem>
-
-              <ClassItem tw="min-w-[3.5rem]" heading="Type">{type}</ClassItem>
-
-              <ClassItem tw="w-14" heading="Type">
-                {type}
-              </ClassItem>
-
-            </MeetingItem>
-          )
-        )}
+        {meetingData.map(({ day, start, end, building, room, type }, i) => (
+          <MeetingItem key={i}>
+            <ClassItem tw="w-32" heading="Day, Start - End">
+              {!!day && `${day}, ${start} - ${end}`}
+            </ClassItem>
+            <ClassItem tw="w-24 top-0" heading="Classroom">
+              {building} {room}
+            </ClassItem>
+            <ClassItem tw="w-14" heading="Type">
+              {type}
+            </ClassItem>
+          </MeetingItem>
+        ))}
       </List>
 
       <SeatingItem>

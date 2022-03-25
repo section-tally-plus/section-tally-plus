@@ -6,7 +6,6 @@ import Overlay from 'react-bootstrap/esm/Overlay'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
-// import SectionList from './SectionList'
 import ClassItem from './ClassItem'
 import Section from './Section'
 
@@ -19,10 +18,10 @@ const Heading = tw.ul`relative flex flex-row gap-8 scale-90 bg-gray-200 italic`
 const Toggle = tw.button` bg-red-400 px-2`
 
 const CourseDisplay = ({
-  subject,
-  courseNum,
-  title,
-  creditHours,
+  Subj: subject,
+  Crse: courseNum,
+  Title: title,
+  Hrs: creditHours,
   sectionData,
   ...rest
 }) => {
@@ -32,7 +31,7 @@ const CourseDisplay = ({
   const target = useRef(null);
 
   return (
-    <Component>
+    <Component {...rest}>
       <Top>
         <List>
           <ClassItem tw="min-w-[9rem]">
@@ -62,11 +61,6 @@ const CourseDisplay = ({
         </Toggle>
       </Top>
       <AnimateHeight height={isClosed ? 0 : 'auto'} easing="ease-in-out">
-        {/* <Heading>
-          <li>CRN</li>
-          <li>Term Length</li>
-          <li>Section</li>
-        </Heading> */}
         <SectionList>
           {sectionData.map((section, i) => (
             <Section key={i} {...section} />

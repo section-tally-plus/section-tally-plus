@@ -13,9 +13,8 @@ const GoButton = ({ ...rest }) => {
     selectedFilters,
     toggleResults,
     toggleSidebar,
-    semesterData,
     setSemesterData,
-    abvs,
+    toggleProfile,
   } = useContext(AppContext)
 
   return (
@@ -26,6 +25,7 @@ const GoButton = ({ ...rest }) => {
 
         if (!!semester) {
           // todo: impliment a check if results are already being shown
+          toggleProfile(false)
           toggleResults(true)
           toggleSidebar(true)
 
@@ -46,7 +46,7 @@ const GoButton = ({ ...rest }) => {
           await axios
             .get(endpoint)
             .then((result) => {
-              // setSemesterData(result.data)
+              setSemesterData(result.data)
               console.log(result.data)
             })
             .catch((error) => console.log(error))

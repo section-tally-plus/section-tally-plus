@@ -16,11 +16,11 @@ const ImageWrapper = styled.div`
 `
 
 const Hero = ({ ...rest }) => {
-  const { showResults } = useContext(AppContext)
+  const { showResults, showProfile } = useContext(AppContext)
 
   return (
     <AnimateHeight
-      height={showResults ? 72 : 'auto'}
+      height={showResults || showProfile ? 72 : 'auto'}
       duration={500}
       easing="ease-in-out"
     >
