@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import tw, { styled } from 'twin.macro'
 import axios from 'axios'
 import { useUser } from '@auth0/nextjs-auth0'
 
 const Section = styled.section(({ showSidebar }) => [
-  tw` relative top-0 right-0 flex flex-col w-full px-8 py-12 ml-auto mr-0 transition-all duration-500 ease-in-out`,
+  tw`relative top-0 right-0 flex flex-col w-full px-8 py-12 ml-auto mr-0 transition-all duration-500 ease-in-out `,
   showSidebar && tw`w-[calc(100% - 20rem)]`,
 ])
 
@@ -22,13 +22,14 @@ const Profile = ({ ...rest }) => {
   const { user, error, isLoading } = useUser()
   console.log(user)
   const { given_name, family_name, email } = user
-
+  const [watchlist, setWatchlist] = useState([])
   useEffect(() => {
     if (user != undefined) {
       axios
-        .get(`http://localhost:3000/api/users/${user.name}`)
+        .get(`http://localhost:3000/api/users/${user.name}/watchlist`)
         .then((result) => {
-          console.log(result.data[0].watchlist)
+          console.log(result.data)
+          setWatchlist(result.data)
         })
         .catch((error) => {
           console.log(error)
@@ -46,7 +47,11 @@ const Profile = ({ ...rest }) => {
 
       <div tw="mt-4">
         <h3>Favorites 🌟</h3>
-        <ul></ul>
+        <ul>
+          {console.log(typeof watchlist)}
+          {!!watchlist &&
+            watchlist.map(({ course }, i) => <li key={i}>{course}</li>)}
+        </ul>
       </div>
 
       <div tw="mt-4">
