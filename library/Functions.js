@@ -11,7 +11,11 @@ export const getUserFromDB = (user) => {
     })
   return data
 }
-
+export const deleteCourse = (user, subject, course) => {
+  axios.delete(
+    `http://localhost:3000/api/users/${user.email}/watchlist/${subject}/${course}`
+  )
+}
 // Adds course to user's favorites List
 export const addFavorite = (user, course, subject) => {
   axios

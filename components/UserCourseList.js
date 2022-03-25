@@ -1,6 +1,6 @@
 import React from 'react'
 import tw, { styled } from 'twin.macro'
-
+import { deleteCourse } from '../library/Functions'
 const Section = tw.div`shadow-xl flex flex-col items-center min-w-[20rem] py-6 gap-4`
 const Title = tw.h3`text-2xl font-oxygen font-bold `
 const List = tw.ul`flex flex-col gap-1`
@@ -22,7 +22,7 @@ const removeCourse = (Subj, course) => {
   console.log(Subj, course)
 }
 
-const UserCourseList = ({ title, classes, ...rest }) => {
+const UserCourseList = ({ title, classes, user, ...rest }) => {
   return (
     <Section {...rest}>
       <Title>{title}</Title>
@@ -41,7 +41,11 @@ const UserCourseList = ({ title, classes, ...rest }) => {
                       move
                     </button>{' '}
                     /{' '}
-                    <button onClick={() => removeCourse(Subj, course)}>
+                    <button
+                      onClick={() => {
+                        deleteCourse(user, Subj, course)
+                      }}
+                    >
                       delete
                     </button>
                   </div>
