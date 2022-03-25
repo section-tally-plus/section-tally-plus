@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import { filterOptions } from '../data/FilterData'
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
+import { getLists } from '../library/Functions'
 
 const AppContext = createContext({})
 
@@ -26,15 +27,8 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (!!user) {
-      axios
-        .get(`http://localhost:3000/api/users/${user.name}/watchlist`)
-        .then((result) => {
-          console.log(result.data)
-          setWatchlist(result.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      const data = getLists(user)
+      console.log(data)
     }
   }, [user])
 

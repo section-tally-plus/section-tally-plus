@@ -1,5 +1,6 @@
 import React from 'react'
 import tw from 'twin.macro'
+import { addFavorite } from '../library/Functions'
 
 import AddCourse from './AddCourse'
 
@@ -19,7 +20,7 @@ const UserInfo = ({ name, email, picture, ...rest }) => {
         </List>
       </Wrapper>
       <AddCourses>
-        <AddCourse type="favorites" />
+        <AddCourse type="favorites" addCourse={addFavorite} />
         <AddCourse type="course taken" />
       </AddCourses>
     </Section>
