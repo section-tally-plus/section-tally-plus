@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useState } from 'react'
 import tw, { styled } from 'twin.macro'
 import AppContext from './AppContext'
-import useInView from 'react-cool-inview'
 import dynamic from 'next/dynamic'
+import LazyLoad from 'react-lazyload'
 import axios from 'axios'
 
 import { data } from '../data/ClassData'
@@ -18,32 +18,16 @@ const Section = styled.section(({ showSidebar }) => [
 
 const Results = ({ ...rest }) => {
   const { showSidebar, semesterData, endpoint } = useContext(AppContext)
-
-  // const { observe, unobserve, inView, scrollDirection, entry } = useInView({
-  //   onEnter: ({ unobserve }) => {
-  //     unobserve()
-  //     axios.get(endpoint).then((res) => {
-  //       setTodos([...semesterData, ...res.data])
-  //     })
-  //   },
-  // })
-
-  // console.log(inView)
+  const [limit, setLimit] = useState(10)
 
   return (
-    <Section
-      showSidebar={showSidebar}
-      // ref={observe}
-      {...rest}
-    >
-      {/* {semesterData !== [] &&
+    <Section showSidebar={showSidebar} {...rest}>
+      {semesterData !== [] &&
         semesterData.map((course, i) => (
-          <CourseDisplay
-            ref={i === data.length - 1 ? observe : null}
-            key={i}
-            {...course}
-          />
-        ))} */}
+          <LazyLoad height={200} offset={200} once>
+            <CourseDisplay key={course.id} {...course} />
+          </LazyLoad>
+        ))}
     </Section>
   )
 }
