@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import tw, { styled } from 'twin.macro'
 import { deleteCourse } from '../library/Functions'
+import AppContext from './AppContext'
+import axios from 'axios'
 const Section = tw.div`shadow-xl flex flex-col items-center min-w-[20rem] py-6 gap-4`
 const Title = tw.h3`text-2xl font-oxygen font-bold `
 const List = tw.ul`flex flex-col gap-1`
@@ -22,7 +24,16 @@ const removeCourse = (Subj, course) => {
   console.log(Subj, course)
 }
 
-const UserCourseList = ({ title, classes, user, ...rest }) => {
+const UserCourseList = ({ title, classes, ...rest }) => {
+  const { user, setWatchlist } = useContext(AppContext)
+  const [listChange, setListChange] = useState(false)
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/users/${user.email}/watchlist`)
+      .then((result) => {
+        setWatchlist(result.data)
+      })
+  }, [listChange])
   return (
     <Section {...rest}>
       <Title>{title}</Title>
@@ -43,7 +54,9 @@ const UserCourseList = ({ title, classes, user, ...rest }) => {
                     /{' '}
                     <button
                       onClick={() => {
-                        deleteCourse(user, Subj, course)
+                        deleteCourse(user, Subj, course).then(() => {
+                          setListChange(!listChange)
+                        })
                       }}
                     >
                       delete
