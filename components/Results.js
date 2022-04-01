@@ -1,13 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import tw, { styled } from 'twin.macro'
 import AppContext from './AppContext'
 import dynamic from 'next/dynamic'
 import LazyLoad from 'react-lazyload'
-import axios from 'axios'
-
-import { data } from '../data/ClassData'
-
-// import CourseDisplay from './CourseDisplay'
 
 const CourseDisplay = dynamic(() => import('./CourseDisplay'))
 
@@ -18,7 +13,6 @@ const Section = styled.section(({ showSidebar }) => [
 
 const Results = ({ ...rest }) => {
   const { showSidebar, semesterData, endpoint } = useContext(AppContext)
-  const [limit, setLimit] = useState(10)
 
   return (
     <Section showSidebar={showSidebar} {...rest}>
