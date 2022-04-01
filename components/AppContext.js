@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import { filterOptions } from '../data/FilterData'
 import { useUser } from '@auth0/nextjs-auth0'
 import axios from 'axios'
+import { getUserFromDB } from '../library/Functions'
 
 const AppContext = createContext({})
 
@@ -24,17 +25,22 @@ export const AppProvider = ({ children }) => {
   const [watchlist, setWatchlist] = useState([])
   const { user, error, isLoading } = useUser()
 
+  const updateLists = (user) => {
+    console.log('updateLists')
+    getUserFromDB(user)
+      .then((result) => {
+        const { watchlist, takenlist } = result
+        watchlist && setWatchlist(watchlist)
+        takenlist && setTakenlist(takenlist)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   useEffect(() => {
     if (!!user) {
-      axios
-        .get(`http://localhost:3000/api/users/${user.name}/watchlist`)
-        .then((result) => {
-          console.log(result.data)
-          setWatchlist(result.data)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      updateLists(user)
     }
   }, [user])
 
@@ -62,6 +68,7 @@ export const AppProvider = ({ children }) => {
         user,
         error,
         isLoading,
+        updateLists,
       }}
     >
       {children}

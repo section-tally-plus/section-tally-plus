@@ -14,7 +14,7 @@ const Header = ({ ...rest }) => {
   useEffect(() => {
     if (user != undefined) {
       axios
-        .get(`http://localhost:3000/api/users/${user.name}`)
+        .get(`http://localhost:3000/api/users/${user.email}`)
         .then((result) => {
           if (result.data.length == 0) {
             const newUser = {
