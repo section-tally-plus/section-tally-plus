@@ -21,6 +21,7 @@ const Header = ({ ...rest }) => {
               name: user.name,
               email: user.email,
               watchlist: [],
+              takenlist: [],
             }
 
             axios.post(`http://localhost:3000/api/users`, newUser)

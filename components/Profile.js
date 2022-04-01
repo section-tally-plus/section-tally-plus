@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import tw, { styled } from 'twin.macro'
 import AppContext from './AppContext'
+import { deleteFavorite, deleteTaken } from '../library/Functions'
 
 import UserInfo from './UserInfo'
 import UserCourseList from './UserCourseList'
@@ -11,15 +12,23 @@ const Section = styled.section(({ showSidebar }) => [
 ])
 
 const Profile = ({ ...rest }) => {
-  const { user, watchlist } = useContext(AppContext)
+  const { user, watchlist, takenlist } = useContext(AppContext)
 
   return (
     <Section {...rest}>
       <UserInfo {...user} />
 
       <div tw="flex flex-row w-full mt-12 flex-wrap relative justify-evenly">
-        <UserCourseList title="Favorites 🌟" classes={watchlist} />
-        <UserCourseList title="Courses Taken 📚" />
+        <UserCourseList
+          title="Favorites 🌟"
+          classes={watchlist}
+          deleteCourse={deleteFavorite}
+        />
+        <UserCourseList
+          title="Courses Taken 📚"
+          classes={takenlist}
+          deleteCourse={deleteTaken}
+        />
       </div>
     </Section>
   )

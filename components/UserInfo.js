@@ -1,7 +1,6 @@
 import React from 'react'
 import tw from 'twin.macro'
-import { addFavorite } from '../library/Functions'
-
+import { addFavorite, addTaken } from '../library/Functions'
 import AddCourse from './AddCourse'
 
 const Section = tw.section`w-full flex flex-row items-center justify-between`
@@ -21,7 +20,7 @@ const UserInfo = ({ name, email, picture, ...rest }) => {
       </Wrapper>
       <AddCourses>
         <AddCourse type="favorites" addCourse={addFavorite} />
-        <AddCourse type="course taken" />
+        <AddCourse type="course taken" addCourse={addTaken} />
       </AddCourses>
     </Section>
   )
