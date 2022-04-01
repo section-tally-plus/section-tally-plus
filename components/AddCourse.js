@@ -9,7 +9,8 @@ const Input = tw.input`w-full bg-gray-300 text-center`
 const Button = tw.button`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`
 
 const AddCourse = ({ type, addCourse, ...rest }) => {
-  const { user, updateLists, setWatchlist } = useContext(AppContext)
+  const { user, updateLists, setWatchlist, setTakenlist } =
+    useContext(AppContext)
   const [course, setCourse] = useState('')
   const [Subj, setSubj] = useState('')
   const [listChange, setListChange] = useState('false')
@@ -19,6 +20,11 @@ const AddCourse = ({ type, addCourse, ...rest }) => {
       .get(`http://localhost:3000/api/users/${user.email}/watchlist`)
       .then((result) => {
         setWatchlist(result.data)
+      })
+    axios
+      .get(`http://localhost:3000/api/users/${user.email}/takenlist`)
+      .then((result) => {
+        setTakenlist(result.data)
       })
   }, [listChange])
   return (
