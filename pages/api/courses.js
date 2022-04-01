@@ -10,12 +10,11 @@ export default async function handler(req, res) {
   filters = filters.slice(1)
   let params = {}
   filters.forEach((filter) => {
-    // console.log(query[filter])
     if (query[filter]) {
       params[filter] = { $in: query[filter].split(',') }
     }
   })
-  // params['sectionData.meetingData.day'] = { $in: ['R'] }
+
   console.log(params)
   const allCourses = await db.collection(query.semester).find(params).toArray()
   res.status(200).json(allCourses)
