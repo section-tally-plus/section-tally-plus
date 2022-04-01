@@ -18,5 +18,5 @@ export default async function handler(req, res) {
   // params['sectionData.meetingData.day'] = { $in: ['R'] }
   console.log(params)
   const allCourses = await db.collection(query.semester).find(params).toArray()
-  res.status(200).json(JSON.stringify(allCourses, null, 2))
+  res.status(200).json(allCourses)
 }
