@@ -70,9 +70,13 @@ const CourseDisplay = ({
           )}
         </Toggle>
       </Top>
-      <AnimateHeight height={isClosed ? 0 : 'auto'} easing="ease-in-out">
+      <AnimateHeight
+        height={isClosed ? 0 : 'auto'}
+        duration={300}
+        easing="ease-in-out"
+      >
         <SectionList>
-          {sectionData.map((section, i) => (
+          {sectionData?.map((section, i) => (
             <Section key={i} {...section} />
           ))}
         </SectionList>
