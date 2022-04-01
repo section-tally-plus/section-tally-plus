@@ -32,11 +32,15 @@ const Section = ({
 }) => {
   return (
     <Single {...rest}>
-
-      <ClassItem tw="min-w-[2rem]" heading="CRN">{crn}</ClassItem>
-      <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
-      <ClassItem tw="min-w-[2.5rem]" heading="Section">{section}</ClassItem>
-
+      <ClassItem tw="min-w-[2rem]" heading="CRN">
+        {crn}
+      </ClassItem>
+      <ClassItem tw="w-20" heading="Part of Term">
+        {partTerm}
+      </ClassItem>
+      <ClassItem tw="min-w-[2.5rem]" heading="Section">
+        {section}
+      </ClassItem>
       <ClassItem tw="w-10" heading="CRN">
         {crn}
       </ClassItem>
@@ -46,7 +50,6 @@ const Section = ({
       <ClassItem tw="w-10" heading="Section">
         {section}
       </ClassItem>
-
       <OverlayTrigger
         placement="right"
         delay={{ show: 250, hide: 400 }}
@@ -76,7 +79,7 @@ const Section = ({
           </MeetingItem>
         ))}
       </List>
-
+      //todo change waitAvail etc. to uppercase
       <SeatingItem>
         <ClassItem tw="min-w-[4rem]" heading="Availability">
           {avail} / {max}
