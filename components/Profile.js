@@ -18,7 +18,7 @@ const Profile = ({ ...rest }) => {
       <UserInfo {...user} />
 
       <div tw="flex flex-row w-full mt-12 flex-wrap relative justify-evenly">
-        <UserCourseList title="Favorites 🌟" classes={watchlist} user={user} />
+        <UserCourseList title="Favorites 🌟" classes={watchlist} />
         <UserCourseList title="Courses Taken 📚" />
       </div>
     </Section>
