@@ -50,7 +50,6 @@ const Section = ({
       <ClassItem tw="w-10" heading="Section">
         {section}
       </ClassItem>
-
       {/* <OverlayTrigger
         placement="right"
         delay={{ show: 250, hide: 400 }}
@@ -80,7 +79,7 @@ const Section = ({
           </MeetingItem>
         ))}
       </List>
-
+      //todo change waitAvail etc. to uppercase
       <SeatingItem>
         <ClassItem tw="min-w-[4rem]" heading="Availability">
           {avail} / {max}

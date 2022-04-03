@@ -23,6 +23,7 @@ export const AppProvider = ({ children }) => {
     'http://localhost:3000/api/courses?semester='
   ) // used to build the api endpoint
   const [watchlist, setWatchlist] = useState([])
+  const [takenlist, setTakenlist] = useState([])
   const { user, error, isLoading } = useUser()
 
   const updateLists = (user) => {
@@ -65,6 +66,8 @@ export const AppProvider = ({ children }) => {
         setEndpoint,
         watchlist,
         setWatchlist,
+        takenlist,
+        setTakenlist,
         user,
         error,
         isLoading,
