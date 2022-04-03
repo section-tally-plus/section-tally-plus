@@ -19,24 +19,28 @@ const Section = ({
   Prof: prof,
   Campus: campus,
   meetingData,
-  max,
-  maxResv,
-  leftResv,
-  enrolled,
-  avail,
-  waitCap,
-  waitCount,
-  waitAvail,
+  Max: max,
+  MaxResv: maxResv,
+  LeftResv: leftResv,
+  Enr: enrolled,
+  Avail: avail,
+  WaitCap: waitCap,
+  WaitCount: waitCount,
+  WaitAvail: waitAvail,
   roomCap,
   ...rest
 }) => {
   return (
     <Single {...rest}>
-
-      <ClassItem tw="min-w-[2rem]" heading="CRN">{crn}</ClassItem>
-      <ClassItem tw="w-20" heading="Part of Term">{partTerm}</ClassItem>
-      <ClassItem tw="min-w-[2.5rem]" heading="Section">{section}</ClassItem>
-
+      <ClassItem tw="min-w-[2rem]" heading="CRN">
+        {crn}
+      </ClassItem>
+      <ClassItem tw="w-20" heading="Part of Term">
+        {partTerm}
+      </ClassItem>
+      <ClassItem tw="min-w-[2.5rem]" heading="Section">
+        {section}
+      </ClassItem>
       <ClassItem tw="w-10" heading="CRN">
         {crn}
       </ClassItem>
@@ -47,17 +51,17 @@ const Section = ({
         {section}
       </ClassItem>
 
-      <OverlayTrigger
+      {/* <OverlayTrigger
         placement="right"
         delay={{ show: 250, hide: 400 }}
         overlay={Rating}
-      >
-        <div>
-          <ClassItem tw="w-36" heading="Professor">
-            {prof}
-          </ClassItem>
-        </div>
-      </OverlayTrigger>
+      > */}
+      {/* <div> */}
+      <ClassItem tw="w-36" heading="Professor">
+        {prof}
+      </ClassItem>
+      {/* </div> */}
+      {/* </OverlayTrigger> */}
       <ClassItem tw="w-16" heading="Campus">
         {campus}
       </ClassItem>
