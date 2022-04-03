@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import tw from 'twin.macro'
 
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-
 import ClassItem from './ClassItem'
 import Rating from './Rating'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 const Single = tw.ul`relative flex flex-row text-gray-800 items-start justify-start gap-6 py-1 flex-wrap px-4 border-b border-gray-800 border-opacity-10`
 const MeetingItem = tw.ul`relative flex flex-row gap-6 flex-wrap`
