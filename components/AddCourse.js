@@ -47,7 +47,7 @@ const AddCourse = ({ type, addCourse, ...rest }) => {
       <Button
         onClick={(e) => {
           e.preventDefault()
-          addCourse(user, course, Subj).then(() => {
+          addCourse(user, Subj, course).then(() => {
             setListChange(!listChange)
           })
           // updateLists(user)

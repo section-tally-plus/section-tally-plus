@@ -11,19 +11,12 @@ export const getUserFromDB = (user) => {
     })
   return data
 }
-export const deleteFavorite = async (user, subject, course) => {
-  await axios.delete(
-    `http://localhost:3000/api/users/${user.email}/watchlist/${subject}/${course}`
-  )
-}
-export const deleteTaken = async (user, subject, course) => {
-  await axios.delete(
-    `http://localhost:3000/api/users/${user.email}/takenlist/${subject}/${course}`
-  )
+
+export const getWatchlist = async (user) => {
+  await axios.get(`http://localhost:3000/api/users/${user.email}/watchlist`)
 }
 
-// Adds course to user's favorites List
-export const addFavorite = async (user, course, subject) => {
+export const addFavorite = async (user, subject, course) => {
   await axios
     .post(`http://localhost:3000/api/users/${user.email}/watchlist`, {
       course: course,
@@ -33,7 +26,12 @@ export const addFavorite = async (user, course, subject) => {
       console.log(error)
     })
 }
-export const addTaken = async (user, course, subject) => {
+export const deleteFavorite = async (user, subject, course) => {
+  await axios.delete(
+    `http://localhost:3000/api/users/${user.email}/watchlist/${subject}/${course}`
+  )
+}
+export const addTaken = async (user, subject, course) => {
   await axios
     .post(`http://localhost:3000/api/users/${user.email}/takenlist`, {
       course: course,
@@ -42,4 +40,9 @@ export const addTaken = async (user, course, subject) => {
     .catch((error) => {
       console.log(error)
     })
+}
+export const deleteTaken = async (user, subject, course) => {
+  await axios.delete(
+    `http://localhost:3000/api/users/${user.email}/takenlist/${subject}/${course}`
+  )
 }

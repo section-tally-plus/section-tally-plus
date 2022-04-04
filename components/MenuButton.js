@@ -14,17 +14,14 @@ const MenuButton = ({ ...rest }) => {
     setSemester,
     showResults,
     toggleResults,
+    showProfile,
+    toggleProfile,
   } = useContext(AppContext)
   return (
     <Button
       {...rest}
       onClick={() => {
-        // this function is gross, but it think it works so I'm not going to touch it
-        // unless someone proves me wrong
-        if (!semester) {
-          !showResults && toggleSidebar(true)
-          toggleResults(!showResults)
-        } else if (showResults) {
+        if (!!showResults || !!showProfile) {
           toggleSidebar(!showSidebar)
         } else {
           toggleResults(true)

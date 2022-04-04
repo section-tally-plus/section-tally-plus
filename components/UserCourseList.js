@@ -18,11 +18,6 @@ const moveCourse = (Subj, course) => {
   )
 }
 
-const removeCourse = (Subj, course) => {
-  console.log('remove course')
-  console.log(Subj, course)
-}
-
 const UserCourseList = ({ title, classes, deleteCourse, ...rest }) => {
   const { user, setWatchlist, setTakenlist } = useContext(AppContext)
   const [listChange, setListChange] = useState(false)
@@ -38,6 +33,7 @@ const UserCourseList = ({ title, classes, deleteCourse, ...rest }) => {
         setTakenlist(result.data)
       })
   }, [listChange])
+
   return (
     <Section {...rest}>
       <Title>{title}</Title>

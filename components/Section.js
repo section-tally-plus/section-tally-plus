@@ -78,7 +78,6 @@ const Section = ({
           </MeetingItem>
         ))}
       </List>
-      //todo change waitAvail etc. to uppercase
       <SeatingItem>
         <ClassItem tw="min-w-[4rem]" heading="Availability">
           {avail} / {max}
