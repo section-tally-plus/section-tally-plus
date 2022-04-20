@@ -7,7 +7,7 @@ import LazyLoad from 'react-lazyload'
 const CourseDisplay = dynamic(() => import('./CourseDisplay'))
 
 const Section = styled.section(({ showSidebar }) => [
-  tw` relative top-0 right-0 flex flex-col w-full px-8 py-12 ml-auto mr-0 transition-all duration-500 ease-in-out`,
+  tw` sm:px-8 relative top-0 right-0 flex flex-col w-full gap-8 py-12 ml-auto mr-0 transition-all duration-500 ease-in-out`,
   showSidebar && tw`w-[calc(100% - 20rem)]`,
 ])
 
