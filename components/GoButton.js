@@ -15,6 +15,7 @@ const GoButton = ({ ...rest }) => {
     toggleSidebar,
     setSemesterData,
     toggleProfile,
+    setMobileMenu,
   } = useContext(AppContext)
 
   return (
@@ -22,7 +23,7 @@ const GoButton = ({ ...rest }) => {
       {...rest}
       onClick={async (e) => {
         e.preventDefault()
-
+        setMobileMenu(false)
         if (!!semester) {
           // todo: impliment a check if results are already being shown
           toggleProfile(false)
@@ -41,13 +42,10 @@ const GoButton = ({ ...rest }) => {
             }
           }
 
-          console.log({ endpoint })
-
           await axios
             .get(endpoint)
             .then((result) => {
               setSemesterData(result.data)
-              console.log(result.data)
             })
             .catch((error) => console.log(error))
         }

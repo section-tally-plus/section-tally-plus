@@ -19,6 +19,7 @@ export const AppProvider = ({ children }) => {
   const [filters, setFilters] = useState(filterOptions) // used to build the sidebar
   const [semesterData, setSemesterData] = useState([]) // data returned from the api
   const [selectedFilters, setSelectedFilters] = useState({}) // used to filter the api data
+  const [mobileMenu, setMobileMenu] = useState(false)
 
   // used to build the api endpoint
   const [endpoint, setEndpoint] = useState(
@@ -77,6 +78,8 @@ export const AppProvider = ({ children }) => {
         updateLists,
         allCollapsed,
         setAllCollapsed,
+        mobileMenu,
+        setMobileMenu,
       }}
     >
       {children}
