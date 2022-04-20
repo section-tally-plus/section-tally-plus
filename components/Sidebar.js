@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import tw, { styled, css } from 'twin.macro'
+import React, { useContext } from 'react'
+import tw, { styled } from 'twin.macro'
 import AppContext from './AppContext'
 
 import FilterSelect from './FilterSelect'
@@ -23,7 +23,7 @@ const Sidebar = ({ ...rest }) => {
       </DropdownWrapper>
       <DropdownWrapper>
         {filters.map((item, i) => (
-          <FilterSelect {...item} key={i} />
+          <FilterSelect {...item} tw="text-white" key={i} />
         ))}
       </DropdownWrapper>
       <GoButton />

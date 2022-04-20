@@ -18,6 +18,7 @@ export default async function handler(req, res) {
       params[filter] = { $in: query[filter].split('%') }
     }
   })
+
   const allCourses = await db
     .collection(query.semester)
     .find(params)
@@ -26,5 +27,6 @@ export default async function handler(req, res) {
   if (sectionLevel) {
     allCourses.filter((course) => {})
   }
+
   res.status(200).json(allCourses)
 }

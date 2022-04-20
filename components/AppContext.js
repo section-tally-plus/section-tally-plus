@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { filterOptions } from '../data/FilterData'
 import { useUser } from '@auth0/nextjs-auth0'
-import axios from 'axios'
-import { getUserFromDB } from '../library/Functions'
+import { getUserFromDB, createUser } from '../library/Functions'
 
 const AppContext = createContext({})
 
@@ -16,18 +15,22 @@ export const AppProvider = ({ children }) => {
   const [showSidebar, toggleSidebar] = useState(true)
   const [showResults, toggleResults] = useState(false)
   const [showProfile, toggleProfile] = useState(false)
+  const [allCollapsed, setAllCollapsed] = useState(false)
   const [filters, setFilters] = useState(filterOptions) // used to build the sidebar
   const [semesterData, setSemesterData] = useState([]) // data returned from the api
   const [selectedFilters, setSelectedFilters] = useState({}) // used to filter the api data
+  const [mobileMenu, setMobileMenu] = useState(false)
+
+  // used to build the api endpoint
   const [endpoint, setEndpoint] = useState(
     'http://localhost:3000/api/courses?semester='
-  ) // used to build the api endpoint
+  )
+
   const [watchlist, setWatchlist] = useState([])
   const [takenlist, setTakenlist] = useState([])
   const { user, error, isLoading } = useUser()
 
   const updateLists = (user) => {
-    console.log('updateLists')
     getUserFromDB(user)
       .then((result) => {
         const { watchlist, takenlist } = result
@@ -74,6 +77,7 @@ export const AppProvider = ({ children }) => {
   }, [semesterData])
   useEffect(() => {
     if (!!user) {
+      createUser(user)
       updateLists(user)
     }
   }, [user])
@@ -105,6 +109,10 @@ export const AppProvider = ({ children }) => {
         error,
         isLoading,
         updateLists,
+        allCollapsed,
+        setAllCollapsed,
+        mobileMenu,
+        setMobileMenu,
       }}
     >
       {children}

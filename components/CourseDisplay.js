@@ -1,25 +1,18 @@
-import React, { useState, useRef } from 'react'
-import tw from 'twin.macro'
+import React, { useState, useRef, useContext } from 'react'
+import tw, { styled } from 'twin.macro'
+import AppContext from './AppContext'
 import AnimateHeight from 'react-animate-height'
-// import Overlay from 'react-bootstrap/esm/Overlay'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faStar,
-  faAngleDown,
-  faAngleUp,
-} from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 import ClassItem from './ClassItem'
 import Section from './Section'
+import FavButton from './FavButton'
 
-const Component = tw.div`relative w-full flex flex-col h-auto`
-const Top = tw.ul`flex flex-row py-2 text-white items-center justify-between bg-gray-800 px-20`
-const List = tw.div`flex-row flex gap-8`
+const Component = tw.div`relative w-full flex flex-col h-auto shadow-2xl`
 const SectionList = tw.ul`relative flex flex-col justify-start h-auto`
-const Heading = tw.ul`relative flex flex-row gap-8 scale-90 bg-gray-200 italic`
-
-const Toggle = tw.button` bg-red-400 px-2`
+const Top = tw.ul`flex flex-row py-2 text-white items-center gap-4 justify-between bg-gray-800 px-4 sm:px-8`
+const List = tw.div`grid grid-cols-2 md:grid-cols-4 w-full gap-x-8 max-w-[60rem]`
 
 const CourseDisplay = ({
   Subj: subject,
@@ -29,49 +22,33 @@ const CourseDisplay = ({
   sectionData,
   ...rest
 }) => {
+  const { allCollapsed, user } = useContext(AppContext)
   const [isClosed, setClosed] = useState(false)
-  //const [fav, setFav] = useState(false)
-  const [show, setShow] = useState(false)
-  const target = useRef(null)
 
   return (
     <Component {...rest}>
       <Top>
         <List>
-          <ClassItem tw="min-w-[9rem]">
+          <ClassItem tw="col-span-2">{title}</ClassItem>
+          <ClassItem tw="">
             {subject} - {courseNum}
           </ClassItem>
-          <ClassItem tw="min-w-[24rem]">{title}</ClassItem>
-          <ClassItem tw="min-w-[7rem]">Credits: {creditHours}</ClassItem>
+          <ClassItem tw="">Credits: {creditHours}</ClassItem>
         </List>
-
-        <button ref={target} onClick={() => setShow(!show)}>
-          <FontAwesomeIcon icon={faStar} />
-          {!show ? 'Fav' : 'UnFav'}
-        </button>
-        {/* <Overlay target={target.current} show={show} placement="bottom-start">
-
-          <div tw="absolute pl-2 bg-yellow-500">
-            {show
-              ? 'Course added to favorites'
-              : 'Course removed from favorites'}
-          </div>
-
-        </Overlay> */}
-        <Toggle
-          onClick={() => {
-            setClosed(!isClosed)
-          }}
-        >
-          {isClosed ? (
-            <FontAwesomeIcon icon={faAngleDown} />
-          ) : (
-            <FontAwesomeIcon icon={faAngleUp} />
-          )}
-        </Toggle>
+        <div tw="flex flex-col sm:flex-row gap-2 sm:gap-4">
+          {!!user && <FavButton courseNum={courseNum} subject={subject} />}
+          <button>
+            <FontAwesomeIcon
+              onClick={() => {
+                setClosed(!isClosed)
+              }}
+              icon={isClosed ? faAngleDown : faAngleUp}
+            />
+          </button>
+        </div>
       </Top>
       <AnimateHeight
-        height={isClosed ? 0 : 'auto'}
+        height={isClosed || allCollapsed ? 0 : 'auto'}
         duration={300}
         easing="ease-in-out"
       >

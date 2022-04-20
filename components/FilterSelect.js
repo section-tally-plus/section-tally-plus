@@ -4,9 +4,9 @@ import { MultiSelect } from 'react-multi-select-component'
 import AppContext from './AppContext'
 
 const Select = tw.div``
-const Header = tw.h3`text-white font-bold mb-1`
+const Header = tw.h3`font-bold mb-1`
 const List = tw.ul`ml-4`
-const Item = tw.li`text-white opacity-30`
+const Item = tw.li`opacity-30`
 
 const FilterSelect = ({ title, abv, options, ...rest }) => {
   const { selectedFilters, setSelectedFilters } = useContext(AppContext)
@@ -21,6 +21,7 @@ const FilterSelect = ({ title, abv, options, ...rest }) => {
     <Select {...rest}>
       <Header>{title}</Header>
       <MultiSelect
+        tw="text-black"
         options={options}
         value={selected}
         onChange={setSelected}
