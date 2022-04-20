@@ -1,5 +1,24 @@
 import axios from 'axios'
 
+export const createUser = (user) => {
+  if (user != undefined) {
+    axios
+      .get(`http://localhost:3000/api/users/${user.email}`)
+      .then((result) => {
+        if (result.data.length == 0) {
+          const newUser = {
+            name: user.name,
+            email: user.email,
+            watchlist: [],
+            takenlist: [],
+          }
+
+          axios.post(`http://localhost:3000/api/users`, newUser)
+        }
+      })
+  }
+}
+
 export const getUserFromDB = (user) => {
   const data = axios
     .get(`http://localhost:3000/api/users/${user.email}`)

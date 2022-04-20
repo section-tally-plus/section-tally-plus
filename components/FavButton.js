@@ -35,9 +35,9 @@ const FavButton = ({ courseNum, subject, ...rest }) => {
         if (isInWatchlist) {
           deleteFavorite(user, subject, courseNum)
           setWatchlist(
-            watchlist.filter((course) => {
-              return course.course !== courseNum || course.Subj !== subject
-            })
+            watchlist.filter(
+              (course) => course.course !== courseNum || course.Subj !== subject
+            )
           )
         } else {
           addFavorite(user, subject, courseNum)
