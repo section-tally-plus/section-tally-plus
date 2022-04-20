@@ -17,7 +17,6 @@ const FilterSelect = ({ title, abv, options, ...rest }) => {
     newSelectedFilters[abv] = selected
     setSelectedFilters(newSelectedFilters)
   }, [selected])
-
   return (
     <Select {...rest}>
       <Header>{title}</Header>
