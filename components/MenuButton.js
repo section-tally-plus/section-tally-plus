@@ -10,18 +10,19 @@ const MenuButton = ({ ...rest }) => {
   const {
     showSidebar,
     toggleSidebar,
-    semester,
-    setSemester,
     showResults,
     toggleResults,
     showProfile,
-    toggleProfile,
+    setMobileMenu,
+    mobileMenu,
   } = useContext(AppContext)
   return (
     <Button
       {...rest}
       onClick={() => {
-        if (!!showResults || !!showProfile) {
+        if (window.innerWidth < 1024) {
+          setMobileMenu(!mobileMenu)
+        } else if (!!showResults || !!showProfile) {
           toggleSidebar(!showSidebar)
         } else {
           toggleResults(true)

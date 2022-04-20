@@ -8,9 +8,13 @@ import Results from '../components/Results'
 import Profile from '../components/Profile'
 
 const Wrapper = tw.div`relative flex flex-row justify-start w-full min-h-screen`
+const BodyWrapper = styled.div(({ showSidebar }) => [
+  tw`sm:px-8 relative flex flex-col w-full h-full py-12 ml-auto mr-0 transition-all duration-500 ease-in-out`,
+  showSidebar && tw`lg:w-[calc(100% - 20rem)]`,
+])
 
 const PageWrapper = ({ ...rest }) => {
-  const { showResults, showProfile } = useContext(AppContext)
+  const { showResults, showProfile, showSidebar } = useContext(AppContext)
 
   return (
     <AnimateHeight
@@ -19,9 +23,11 @@ const PageWrapper = ({ ...rest }) => {
       easing="ease-in-out"
     >
       <Wrapper>
-        <Sidebar />
-        {showResults && <Results />}
-        {showProfile && <Profile />}
+        <Sidebar tw="lg:flex hidden" />
+        <BodyWrapper showSidebar={showSidebar}>
+          {showProfile && <Profile />}
+          {showResults && <Results />}
+        </BodyWrapper>
       </Wrapper>
     </AnimateHeight>
   )

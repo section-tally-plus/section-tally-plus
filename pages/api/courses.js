@@ -15,7 +15,6 @@ export default async function handler(req, res) {
     }
   })
 
-  console.log(params)
   const allCourses = await db.collection(query.semester).find(params).toArray()
   res.status(200).json(allCourses)
 }

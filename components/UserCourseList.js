@@ -11,8 +11,6 @@ const Item = styled.li`
 `
 
 const moveCourse = (Subj, course) => {
-  console.log('add course')
-  console.log(Subj, course)
   console.log(
     'Placeholder. Will eventually move classes from favorites to the taken list.'
   )
