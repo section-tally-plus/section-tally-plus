@@ -41,7 +41,40 @@ export const AppProvider = ({ children }) => {
         console.log(error)
       })
   }
-
+  const filterOptionsContains = (filterOptions, filter) => {
+    const found = filterOptions.some((option) => {
+      return option.label === filter
+    })
+    return found
+  }
+  const addFilterValueIfNotExists = (newFilters, index, attribute) => {
+    if (!filterOptionsContains(newFilters[index].options, attribute)) {
+      newFilters[index].options.push({
+        label: `${attribute}`,
+        value: `${attribute}`,
+      })
+    }
+  }
+  useEffect(() => {
+    console.log(semester)
+    const newFilters = [
+      { abv: 'Subj', options: [], title: 'Subject' },
+      { abv: 'sectionData.Prof', options: [], title: 'Professor' },
+      { abv: 'sectionData.Campus', options: [], title: 'Campus' },
+    ]
+    semesterData.forEach((course) => {
+      //course level filters
+      addFilterValueIfNotExists(newFilters, 0, course.Subj)
+      course.sectionData.forEach((section) => {
+        //section level filters
+        addFilterValueIfNotExists(newFilters, 1, section.Prof)
+        addFilterValueIfNotExists(newFilters, 2, section.Campus)
+      })
+    })
+    console.log(semesterData)
+    console.log(newFilters)
+    setFilters(newFilters)
+  }, [semesterData])
   useEffect(() => {
     if (!!user) {
       createUser(user)

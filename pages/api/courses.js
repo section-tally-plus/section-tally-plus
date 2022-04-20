@@ -9,12 +9,24 @@ export default async function handler(req, res) {
   }
   filters = filters.slice(1)
   let params = {}
+  let sectionLevel = false
   filters.forEach((filter) => {
+    if (filter.contains('sectionData')) {
+      sectionLevel = true
+    }
     if (query[filter]) {
-      params[filter] = { $in: query[filter].split(',') }
+      params[filter] = { $in: query[filter].split('%') }
     }
   })
 
-  const allCourses = await db.collection(query.semester).find(params).toArray()
+  const allCourses = await db
+    .collection(query.semester)
+    .find(params)
+    .sort({ Subj: 1 })
+    .toArray()
+  if (sectionLevel) {
+    allCourses.filter((course) => {})
+  }
+
   res.status(200).json(allCourses)
 }

@@ -36,7 +36,7 @@ const GoButton = ({ ...rest }) => {
             if (selectedFilters[abv].length > 0) {
               endpoint += `&${abv}=`
               selectedFilters[abv].forEach((filter) => {
-                endpoint += `${filter.value},`
+                endpoint += `${filter.value}%`
               })
               endpoint = endpoint.slice(0, -1)
             }
