@@ -65,3 +65,12 @@ export const deleteTaken = async (user, subject, course) => {
     `http://localhost:3000/api/users/${user.email}/takenlist/${subject}/${course}`
   )
 }
+export const findValueInSection = (section, sectionLevelFilters, query) => {
+  let returnVal = false
+  sectionLevelFilters.forEach((filter) => {
+    if (section[filter] === query[`sectionData.${filter}`]) {
+      returnVal = true
+    }
+  })
+  return returnVal
+}
