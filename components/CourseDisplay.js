@@ -20,6 +20,7 @@ const CourseDisplay = ({
   Title: title,
   Hrs: creditHours,
   sectionData,
+  Favorites,
   ...rest
 }) => {
   const { allCollapsed, user } = useContext(AppContext)
@@ -36,7 +37,13 @@ const CourseDisplay = ({
           <ClassItem tw="">Credits: {creditHours}</ClassItem>
         </List>
         <div tw="flex flex-col sm:flex-row gap-2 sm:gap-4">
-          {!!user && <FavButton courseNum={courseNum} subject={subject} />}
+          {!!user && (
+            <FavButton
+              courseNum={courseNum}
+              subject={subject}
+              favorites={Favorites}
+            />
+          )}
           <button>
             <FontAwesomeIcon
               onClick={() => {

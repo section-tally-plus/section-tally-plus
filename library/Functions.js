@@ -44,11 +44,39 @@ export const addFavorite = async (user, subject, course) => {
     .catch((error) => {
       console.log(error)
     })
+  //todo add more semesters
+  const semesters = ['stp_202220', 'stp_202230', 'stp_202240']
+  semesters.forEach((semester) => {
+    axios
+      .patch(
+        `http://localhost:3000/api/courses/${semester}/${subject}/${course}`,
+        {
+          op: 'add',
+        }
+      )
+      .catch((error) => {
+        console.log(error)
+      })
+  })
 }
 export const deleteFavorite = async (user, subject, course) => {
   await axios.delete(
     `http://localhost:3000/api/users/${user.email}/watchlist/${subject}/${course}`
   )
+  //todo add more semesters
+  const semesters = ['stp_202220', 'stp_202230', 'stp_202240']
+  semesters.forEach((semester) => {
+    axios
+      .patch(
+        `http://localhost:3000/api/courses/${semester}/${subject}/${course}`,
+        {
+          op: 'subtract',
+        }
+      )
+      .catch((error) => {
+        console.log(error)
+      })
+  })
 }
 export const addTaken = async (user, subject, course) => {
   await axios
