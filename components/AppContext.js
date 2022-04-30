@@ -56,12 +56,13 @@ export const AppProvider = ({ children }) => {
     }
   }
   useEffect(() => {
-    console.log(semester)
     const newFilters = [
       { abv: 'Subj', options: [], title: 'Subject' },
       { abv: 'sectionData.Prof', options: [], title: 'Professor' },
       { abv: 'sectionData.Campus', options: [], title: 'Campus' },
+      { abv: 'sectionData.meetingData.day', options: [], title: 'Day' },
     ]
+
     semesterData.forEach((course) => {
       //course level filters
       addFilterValueIfNotExists(newFilters, 0, course.Subj)
@@ -69,10 +70,12 @@ export const AppProvider = ({ children }) => {
         //section level filters
         addFilterValueIfNotExists(newFilters, 1, section.Prof)
         addFilterValueIfNotExists(newFilters, 2, section.Campus)
+        section.meetingData.forEach((meeting) => {
+          // meeting level filters
+          !!meeting.day && addFilterValueIfNotExists(newFilters, 3, meeting.day)
+        })
       })
     })
-    console.log(semesterData)
-    console.log(newFilters)
     setFilters(newFilters)
   }, [semesterData])
   useEffect(() => {

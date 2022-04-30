@@ -1,5 +1,6 @@
 import { connectToDatabase } from '../../util/mongodb'
-import { findValueInSection } from '../../library/Functions'
+import { findValueInSection, findValueinMeeting } from '../../library/Functions'
+
 export default async function handler(req, res) {
   const { db } = await connectToDatabase()
   const query = req.query
@@ -11,27 +12,49 @@ export default async function handler(req, res) {
   let params = {}
   let sectionLevel = false
   let sectionLevelFilters = []
+  let meetingLevel = false
+  let meetingLevelFilters = []
   filters.forEach((filter) => {
     if (filter.includes('sectionData')) {
       sectionLevel = true
-      sectionLevelFilters.push(filter.replace('sectionData.', ''))
+      if (filter.includes('meetingData')) {
+        meetingLevel = true
+        meetingLevelFilters.push(filter.replace('sectionData.meetingData.', ''))
+      } else {
+        sectionLevelFilters.push(filter.replace('sectionData.', ''))
+      }
     }
     if (query[filter]) {
       params[filter] = { $in: query[filter].split('%') }
     }
   })
-  console.log(query[filters[0]])
-  const allCourses = await db
+
+  let allCourses = await db
     .collection(query.semester)
     .find(params)
     .sort({ Subj: 1 })
     .toArray()
-  sectionLevel &&
-    allCourses.forEach((course) => {
-      course.sectionData = course.sectionData.filter((section) => {
-        return findValueInSection(section, sectionLevelFilters, query)
-      })
+
+  allCourses = allCourses.filter((course) => {
+    course.sectionData = course.sectionData.filter((section) => {
+      section.meetingData = !meetingLevel
+        ? section.meetingData
+        : section.meetingData.filter((meeting) => {
+            return findValueinMeeting(meeting, meetingLevelFilters, query)
+          })
+      return findValueInSection(
+        section,
+        sectionLevelFilters,
+        query,
+        meetingLevel
+      )
     })
+    if (course.sectionData.length === 0) {
+      return false
+    } else {
+      return true
+    }
+  })
 
   res.status(200).json(allCourses)
 }
