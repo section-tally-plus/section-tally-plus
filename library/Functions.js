@@ -93,12 +93,35 @@ export const deleteTaken = async (user, subject, course) => {
     `http://localhost:3000/api/users/${user.email}/takenlist/${subject}/${course}`
   )
 }
-export const findValueInSection = (section, sectionLevelFilters, query) => {
+export const findValueInSection = (
+  section,
+  sectionLevelFilters,
+  query,
+  meetingLevel
+) => {
   let returnVal = false
+  if (meetingLevel && section.meetingData.length === 0) return false
+  if (sectionLevelFilters.length === 0) return true
+
   sectionLevelFilters.forEach((filter) => {
-    if (section[filter] === query[`sectionData.${filter}`]) {
+    let params = query[`sectionData.${filter}`].split('%')
+
+    if (params.includes(section[filter])) {
       returnVal = true
     }
   })
+  return returnVal
+}
+export const findValueinMeeting = (meeting, meetingLevelFilters, query) => {
+  let returnVal = false
+
+  meetingLevelFilters.forEach((filter) => {
+    let params = query[`sectionData.meetingData.${filter}`].split('%')
+
+    if (params.includes(meeting[filter])) {
+      returnVal = true
+    }
+  })
+
   return returnVal
 }
