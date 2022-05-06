@@ -8,7 +8,8 @@ const Section = styled.select`
 `
 
 const SemesterSelect = ({ ...rest }) => {
-  const { setSemester } = useContext(AppContext)
+  const { setSemester, semesterTitle, setSemesterTitle } =
+    useContext(AppContext)
 
   return (
     <Section
@@ -17,10 +18,11 @@ const SemesterSelect = ({ ...rest }) => {
       required
       onChange={(e) => {
         setSemester(e.target.value)
+        setSemesterTitle(e.target.title)
       }}
     >
       <option value="" disabled selected hidden>
-        Select a Semester
+        {semesterTitle}
       </option>
       {semesters.map(({ value, title }, i) => (
         <option key={i} value={value}>

@@ -12,6 +12,7 @@ filterOptions.forEach((item) => {
 
 export const AppProvider = ({ children }) => {
   const [semester, setSemester] = useState('')
+  const [semesterTitle, setSemesterTitle] = useState('')
   const [showSidebar, toggleSidebar] = useState(true)
   const [showResults, toggleResults] = useState(false)
   const [showProfile, toggleProfile] = useState(false)
@@ -116,6 +117,8 @@ export const AppProvider = ({ children }) => {
         setAllCollapsed,
         mobileMenu,
         setMobileMenu,
+        semesterTitle,
+        setSemesterTitle,
       }}
     >
       {children}
