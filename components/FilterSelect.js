@@ -26,7 +26,6 @@ const FilterSelect = ({ title, abv, options, ...rest }) => {
         value={selected}
         onChange={setSelected}
         hasSelectAll={false}
-        isCreatable={true}
       />
       <List>
         {selected.map((item, i) => (
